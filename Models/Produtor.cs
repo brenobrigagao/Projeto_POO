@@ -7,5 +7,7 @@ public class Produtor{
     public string Endereco {get;set;} = string.Empty;
 
     public int UsuarioId {get;set;}
-    public Usuario usuario {get;set;} = null!;
+    public Usuario Usuario {get;set;} = null!;
+
+    public List<Produto> Produtos{get;set;} = null!;
 }
