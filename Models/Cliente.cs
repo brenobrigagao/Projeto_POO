@@ -6,4 +6,5 @@ public class Cliente{
 
     public int UsuarioId {get;set;}
     public Usuario usuario {get;set;} = null!;
+    public Carrinho carrinho {get;set;} = null!;
 }
