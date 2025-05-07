@@ -1,9 +1,11 @@
+using System.Security.Claims;
 using System.Security.Cryptography;
 using BCrypt.Net;
 using FFCE.Data;
 using FFCE.DTOs;
 using FFCE.Models;
 using FFCE.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +17,17 @@ public class AuthController : ControllerBase
     private readonly AppDbContext _context;
     private readonly TokenService _tokenService;
 
-    public AuthController(AppDbContext context, TokenService tokenService){
+    public AuthController(AppDbContext context, TokenService tokenService)
+    {
         _context = context;
         _tokenService = tokenService;
     }
 
     [HttpPost("registrar")]
-    public async Task<IActionResult> Registro(RegistroDTO dto){
+    public async Task<IActionResult> Registro(RegistroDTO dto)
+    {
         var usuarioExistente = await _context.Usuarios.AnyAsync(u => u.Email == dto.Email);
-        if(usuarioExistente) return BadRequest("Email já cadastrado.");
+        if (usuarioExistente) return BadRequest("Email já cadastrado.");
         var usuario = new Usuario
         {
             Email = dto.Email,
@@ -33,14 +37,15 @@ public class AuthController : ControllerBase
         _context.Usuarios.Add(usuario);
         await _context.SaveChangesAsync();
 
-        return Ok(new {message = "O usuário foi registrado com sucesso!"});
+        return Ok(new { message = "O usuário foi registrado com sucesso!" });
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginDTO dto){
+    public async Task<IActionResult> Login(LoginDTO dto)
+    {
         var usuario = await _context.Usuarios.FirstOrDefaultAsync(U => U.Email == dto.Email);
-        if(usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, usuario.SenhaHash))
-        return Unauthorized("Credenciais inválidas!");
+        if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, usuario.SenhaHash))
+            return Unauthorized("Credenciais inválidas!");
 
         var token = _tokenService.GenerateToken(usuario);
         return Ok(new
@@ -50,4 +55,42 @@ public class AuthController : ControllerBase
             id = usuario.Id
         });
     }
+    [Authorize]
+    [HttpPost("cadastro")]
+    public async Task<IActionResult> Cadastro(CadastroDTO dto)
+    {
+        var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+
+        var usuario = await _context.Usuarios.FindAsync(usuarioId);
+        if (usuario == null) return NotFound("Usuário não encontrado!");
+
+        if (usuario.Role == "Produtor")
+        {
+            var produtor = new Produtor
+            {
+                Nome = dto.Nome,
+                Telefone = dto.Telefone,
+                Endereco = dto.Endereco,
+                NomeLoja = dto.NomeLoja,
+                Descricao = dto.Descricao,
+                UsuarioId = usuarioId
+            };
+            _context.Produtores.Add(produtor);
+        }
+        else if (usuario.Role == "Cliente")
+        {
+            var cliente = new Cliente
+            {
+                Nome = dto.Nome,
+                Telefone = dto.Telefone,
+                Endereco = dto.Endereco,
+                Gostos = dto.Gostos,
+                carrinho = new Carrinho()
+            };
+            _context.Clientes.Add(cliente);
+        }
+        await _context.SaveChangesAsync();
+        return Ok("Cadastro completo com sucesso!");
+    }
+
 }

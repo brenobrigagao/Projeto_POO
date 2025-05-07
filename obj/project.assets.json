@@ -5667,19 +5667,19 @@
     ]
   },
   "packageFolders": {
-    "/home/brenovinicius/.nuget/packages/": {}
+    "C:\\Users\\Acer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/brenovinicius/Área de Trabalho/Projeto_POO/FFCE/FFCE.csproj",
+      "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\FFCE.csproj",
       "projectName": "FFCE",
-      "projectPath": "/home/brenovinicius/Área de Trabalho/Projeto_POO/FFCE/FFCE.csproj",
-      "packagesPath": "/home/brenovinicius/.nuget/packages/",
-      "outputPath": "/home/brenovinicius/Área de Trabalho/Projeto_POO/FFCE/obj/",
+      "projectPath": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\FFCE.csproj",
+      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/brenovinicius/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5697,7 +5697,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -5753,6 +5759,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.14, 8.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.14, 8.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.14, 8.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.14, 8.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5761,7 +5785,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
