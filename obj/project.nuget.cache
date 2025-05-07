@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ggRG5vzKMeZuIGWWleeEjv5v4TLtn31VkUFJKMIaA1y4gQe1QC+QKAuttRK6mz+nc0VOwpUJ3960RF8EOo1nyg==",
+  "dgSpecHash": "80Snf71yGuow/4qEmn8EqeL+gtFn2K2dmtxT8tH5zX1tdhqz5FV8BzbYk4AMxgIfwR4OWo/Wl3b0PAfHcFfHkg==",
   "success": true,
   "projectFilePath": "/home/brenovinicius/Área de Trabalho/Projeto_POO/FFCE/FFCE.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/home/brenovinicius/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/brenovinicius/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/home/brenovinicius/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
+    "/home/brenovinicius/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/brenovinicius/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/brenovinicius/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.0/microsoft.aspnetcore.authentication.jwtbearer.7.0.0.nupkg.sha512",
     "/home/brenovinicius/.nuget/packages/microsoft.aspnetcore.openapi/8.0.10/microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512",
