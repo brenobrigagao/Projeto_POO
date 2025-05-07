@@ -92,5 +92,25 @@ public class AuthController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok("Cadastro completo com sucesso!");
     }
+    [Authorize]
+    [HttpPost("verificar")]
+    public async Task<IActionResult> VerificarCadastro()
+    {
+        var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var usuario = await _context.Usuarios.FindAsync(usuarioId);
+        if (usuario == null) return NotFound("Usuario não encontrado!");
+
+        if (usuario.Role == "Produtor")
+        {
+            var produtor = await _context.Produtores.FirstOrDefaultAsync(u => u.UsuarioId == usuarioId);
+            return Ok(new { cadastroCompleto = produtor != null });
+        }
+        if (usuario.Role == "Cliente")
+        {
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(u => u.UsuarioId == usuarioId);
+            return Ok(new { cadastroCompleto = cliente != null });
+        }
+        return BadRequest("Role desconhecida");
+    }
 
 }
