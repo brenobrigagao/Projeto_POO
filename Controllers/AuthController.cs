@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using BCrypt.Net;
 using FFCE.Data;
 using FFCE.DTOs;
@@ -33,5 +34,20 @@ public class AuthController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok(new {message = "O usuário foi registrado com sucesso!"});
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginDTO dto){
+        var usuario = await _context.Usuarios.FirstOrDefaultAsync(U => U.Email == dto.Email);
+        if(usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, usuario.SenhaHash))
+        return Unauthorized("Credenciais inválidas!");
+
+        var token = _tokenService.GenerateToken(usuario);
+        return Ok(new
+        {
+            token,
+            role = usuario.Role,
+            id = usuario.Id
+        });
     }
 }

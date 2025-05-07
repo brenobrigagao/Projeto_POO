@@ -15,13 +15,13 @@ public class TokenService
         _configuration = configuration;
     }
 
-    public string GenerateToken(Usuario usuario, string role)
+    public string GenerateToken(Usuario usuario)
     {
         var claims = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
             new Claim(ClaimTypes.Name, usuario.Email),
-            new Claim(ClaimTypes.Role, role)
+            new Claim(ClaimTypes.Role, usuario.Role)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
