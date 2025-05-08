@@ -43,4 +43,25 @@ public class ProdutorController : ControllerBase
 
         return Ok("Produto cadstrado com sucesso.");
     }
+    [HttpGet("meus-produtos")]
+    public async Task<IActionResult> MeusProdutos()
+    {
+        var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var produtor = await _context.Produtores
+            .Include(p => p.Produtos)
+            .ThenInclude(prod => prod.flor)
+            .FirstOrDefaultAsync(p => p.UsuarioId == usuarioId);
+
+        if (produtor == null) return BadRequest("Produtor não encontrado.");
+
+        var resultado = produtor.Produtos.Select(p => new
+        {
+            p.Id,
+            Flor = p.flor.Nome,
+            p.Preco,
+            p.Estoque
+        });
+
+        return Ok(resultado);
+    }
 }
