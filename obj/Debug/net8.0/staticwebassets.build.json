@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "Hash": "qf93/a/HLzRJ/eNDQqRx3L2e2LDcBk1jIksVqs9CV1k=",
+  "Source": "FFCE",
+  "BasePath": "_content/FFCE",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FFCE\\wwwroot",
+      "Source": "FFCE",
+      "ContentRoot": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\",
+      "BasePath": "_content/FFCE",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "scripts/login#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xt98ej2t99",
+      "Integrity": "O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\scripts\\login.js"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "scripts/login.js",
+      "AssetFile": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.xt98ej2t99.js",
+      "AssetFile": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xt98ej2t99"
+        },
+        {
+          "Name": "label",
+          "Value": "scripts/login.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+        }
+      ]
+    }
+  ]
+}

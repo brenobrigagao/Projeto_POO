@@ -11,5 +11,5 @@ public class ItemCarrinho
     public int Quantidade { get; set; }
     public decimal Preco { get; set; }
     public int CarrinhoId{get;set;}
-    public Carrinho carrinho{get;set;} = null!;
+    public Carrinho Carrinho{get;set;} = null!;
 }

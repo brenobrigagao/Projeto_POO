@@ -33,7 +33,7 @@ public class AppDbContext : DbContext{
 
         modelBuilder.Entity<Carrinho>()
             .HasMany(c => c.Itens)
-            .WithOne()
+            .WithOne(i => i.Carrinho)
             .HasForeignKey(i => i.CarrinhoId);
 
         modelBuilder.Entity<Produto>()
@@ -50,5 +50,9 @@ public class AppDbContext : DbContext{
             .HasOne(i => i.Produto)
             .WithMany()
             .HasForeignKey(i => i.ProdutoId);
+        modelBuilder.Entity<ItemCarrinho>()
+        .HasOne(i => i.Carrinho)
+        .WithMany(c => c.Itens)
+        .HasForeignKey(i => i.CarrinhoId);
     }
 }

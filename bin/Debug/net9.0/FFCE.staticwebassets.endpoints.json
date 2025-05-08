@@ -1,0 +1,304 @@
+{
+  "Version": 1,
+  "ManifestType": "Build",
+  "Endpoints": [
+    {
+      "Route": "scripts/login.js",
+      "AssetFile": "scripts/login.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001785714286"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "559"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n5w+c196tf5mOStGgEkZo6XPW+43pSZ+z8KFw/tj41o=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.js",
+      "AssetFile": "scripts/login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.js.gz",
+      "AssetFile": "scripts/login.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "559"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n5w+c196tf5mOStGgEkZo6XPW+43pSZ+z8KFw/tj41o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-n5w+c196tf5mOStGgEkZo6XPW+43pSZ+z8KFw/tj41o="
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.xt98ej2t99.js",
+      "AssetFile": "scripts/login.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001785714286"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "559"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n5w+c196tf5mOStGgEkZo6XPW+43pSZ+z8KFw/tj41o=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xt98ej2t99"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+        },
+        {
+          "Name": "label",
+          "Value": "scripts/login.js"
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.xt98ej2t99.js",
+      "AssetFile": "scripts/login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xt98ej2t99"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+        },
+        {
+          "Name": "label",
+          "Value": "scripts/login.js"
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.xt98ej2t99.js.gz",
+      "AssetFile": "scripts/login.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "559"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n5w+c196tf5mOStGgEkZo6XPW+43pSZ+z8KFw/tj41o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xt98ej2t99"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-n5w+c196tf5mOStGgEkZo6XPW+43pSZ+z8KFw/tj41o="
+        },
+        {
+          "Name": "label",
+          "Value": "scripts/login.js.gz"
+        }
+      ]
+    }
+  ]
+}
