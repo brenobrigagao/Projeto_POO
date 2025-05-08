@@ -93,7 +93,7 @@ public class AuthController : ControllerBase
         return Ok("Cadastro completo com sucesso!");
     }
     [Authorize]
-    [HttpPost("verificar")]
+    [HttpGet("verificar")]
     public async Task<IActionResult> VerificarCadastro()
     {
         var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);

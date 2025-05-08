@@ -7,4 +7,6 @@ public class CadastroDTO
     public string Telefone { get; set; } = string.Empty;
     public string NomeLoja { get; set; } = string.Empty;
     public string Descricao { get; set; } = string.Empty;
+    public string Gostos { get; set; } = string.Empty;
+
 }
