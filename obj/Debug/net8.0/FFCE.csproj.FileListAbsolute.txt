@@ -367,4 +367,9 @@ C:/Users/Acer/Desktop/Projeto_POO/obj/Debug/net8.0/ref/FFCE.dll
 /home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/FFCE.pdb
 /home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/FFCE.genruntimeconfig.cache
 /home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/ref/FFCE.dll
-/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets.build.json.cache
+/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssets.props
+/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets/msbuild.build.FFCE.props
+/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.FFCE.props
+/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.FFCE.props
+/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net8.0/staticwebassets.pack.json
