@@ -1,11 +1,21 @@
-using FFCE.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Produto{
-    public int Id{get;set;} 
-    public int FlorId{get;set;}
-    public Flor flor {get;set;} = null!;
-    public int ProdutorId {get;set;}
-    public Produtor produtor {get;set;} = null!;
-    public decimal Preco {get;set;}
-    public int Estoque {get;set;}
+namespace FFCE.Models
+{
+    public class Produto
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        public int FlorId { get; set; }
+        public decimal Preco { get; set; }
+        public int Estoque { get; set; }
+
+        public int ProdutorId { get; set; }
+        public Produtor Produtor { get; set; }
+
+        public Flor Flor { get; set; }
+    }
 }

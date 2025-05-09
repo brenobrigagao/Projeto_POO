@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qf93/a/HLzRJ/eNDQqRx3L2e2LDcBk1jIksVqs9CV1k=",
+  "Hash": "7GXItlS5OWDjk9GxNFN0XV42sJtDgkbiDkPN5zulXaM=",
   "Source": "FFCE",
   "BasePath": "_content/FFCE",
   "Mode": "Default",
@@ -8,19 +8,19 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "FFCE\\wwwroot",
+      "Name": "FFCE/wwwroot",
       "Source": "FFCE",
-      "ContentRoot": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/",
       "BasePath": "_content/FFCE",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js",
       "SourceId": "FFCE",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/",
       "BasePath": "_content/FFCE",
       "RelativePath": "scripts/login#[.{fingerprint}]?.js",
       "AssetKind": "All",
@@ -31,17 +31,17 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xt98ej2t99",
-      "Integrity": "O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=",
+      "Fingerprint": "bnkz2g7fsb",
+      "Integrity": "RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\scripts\\login.js"
+      "OriginalItemSpec": "wwwroot/scripts/login.js"
     }
   ],
   "Endpoints": [
     {
-      "Route": "scripts/login.js",
-      "AssetFile": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
+      "Route": "scripts/login.bnkz2g7fsb.js",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -50,7 +50,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1393"
+          "Value": "1355"
         },
         {
           "Name": "Content-Type",
@@ -58,48 +58,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
+          "Value": "\"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 08 May 2025 12:35:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
-        }
-      ]
-    },
-    {
-      "Route": "scripts/login.xt98ej2t99.js",
-      "AssetFile": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1393"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 08 May 2025 12:35:50 GMT"
+          "Value": "Fri, 09 May 2025 11:57:37 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -109,7 +72,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xt98ej2t99"
+          "Value": "bnkz2g7fsb"
         },
         {
           "Name": "label",
@@ -117,7 +80,44 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-O8Igrvy9vySYge2kM2BR9JJXofI6BYlc3jtFd8y4RfI="
+          "Value": "sha256-RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw="
+        }
+      ]
+    },
+    {
+      "Route": "scripts/login.js",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1355"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 09 May 2025 11:57:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw="
         }
       ]
     }

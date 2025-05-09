@@ -1,16 +1,21 @@
-namespace FFCE.Models;
+using System.Text.Json.Serialization;
 
-public class Produtor
+namespace FFCE.Models
 {
-    public int Id { get; set; }
-    public string Nome { get; set; } = string.Empty;
-    public string Telefone { get; set; } = string.Empty;
-    public string Endereco { get; set; } = string.Empty;
-    public string NomeLoja { get; set; } = string.Empty;
-    public string Descricao { get; set; } = string.Empty;
+    public class Produtor
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
+        public string Endereco { get; set; } = string.Empty;
+        public string NomeLoja { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
 
-    public int UsuarioId { get; set; }
-    public Usuario Usuario { get; set; } = null!;
+        public int UsuarioId { get; set; }
+        [JsonIgnore]
+        public Usuario Usuario { get; set; } = null!;
 
-    public List<Produto> Produtos { get; set; } = new();
+        [JsonIgnore]
+        public List<Produto> Produtos { get; set; } = new List<Produto>();
+    }
 }

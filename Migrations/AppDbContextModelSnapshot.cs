@@ -14,7 +14,7 @@ namespace FFCE.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
                 {
@@ -65,6 +65,25 @@ namespace FFCE.Migrations
                     b.ToTable("Clientes");
                 });
 
+            modelBuilder.Entity("FFCE.Models.Flor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Flores");
+                });
+
             modelBuilder.Entity("FFCE.Models.ItemCarrinho", b =>
                 {
                     b.Property<int>("Id")
@@ -92,6 +111,33 @@ namespace FFCE.Migrations
                     b.ToTable("ItensCarrinho");
                 });
 
+            modelBuilder.Entity("FFCE.Models.Produto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Estoque")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FlorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProdutorId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlorId");
+
+                    b.HasIndex("ProdutorId");
+
+                    b.ToTable("Produtos");
+                });
+
             modelBuilder.Entity("FFCE.Models.Produtor", b =>
                 {
                     b.Property<int>("Id")
@@ -105,9 +151,6 @@ namespace FFCE.Migrations
                     b.Property<string>("Endereco")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("FlorId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -125,8 +168,6 @@ namespace FFCE.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FlorId");
 
                     b.HasIndex("UsuarioId");
 
@@ -154,52 +195,6 @@ namespace FFCE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("Flor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Flores");
-                });
-
-            modelBuilder.Entity("Produto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Estoque")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("FlorId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Preco")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ProdutorId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FlorId");
-
-                    b.HasIndex("ProdutorId");
-
-                    b.ToTable("Produtos");
                 });
 
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
@@ -232,10 +227,10 @@ namespace FFCE.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Produto", "Produto")
+                    b.HasOne("FFCE.Models.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Carrinho");
@@ -243,12 +238,27 @@ namespace FFCE.Migrations
                     b.Navigation("Produto");
                 });
 
+            modelBuilder.Entity("FFCE.Models.Produto", b =>
+                {
+                    b.HasOne("FFCE.Models.Flor", "Flor")
+                        .WithMany("Produtos")
+                        .HasForeignKey("FlorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FFCE.Models.Produtor", "Produtor")
+                        .WithMany("Produtos")
+                        .HasForeignKey("ProdutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flor");
+
+                    b.Navigation("Produtor");
+                });
+
             modelBuilder.Entity("FFCE.Models.Produtor", b =>
                 {
-                    b.HasOne("Flor", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("FlorId");
-
                     b.HasOne("FFCE.Models.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
@@ -256,25 +266,6 @@ namespace FFCE.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("Produto", b =>
-                {
-                    b.HasOne("Flor", "flor")
-                        .WithMany()
-                        .HasForeignKey("FlorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FFCE.Models.Produtor", "produtor")
-                        .WithMany("Produtos")
-                        .HasForeignKey("ProdutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("flor");
-
-                    b.Navigation("produtor");
                 });
 
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
@@ -288,12 +279,12 @@ namespace FFCE.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FFCE.Models.Produtor", b =>
+            modelBuilder.Entity("FFCE.Models.Flor", b =>
                 {
                     b.Navigation("Produtos");
                 });
 
-            modelBuilder.Entity("Flor", b =>
+            modelBuilder.Entity("FFCE.Models.Produtor", b =>
                 {
                     b.Navigation("Produtos");
                 });
