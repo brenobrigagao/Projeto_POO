@@ -73,17 +73,11 @@ namespace FFCE.Migrations
                     Endereco = table.Column<string>(type: "TEXT", nullable: false),
                     NomeLoja = table.Column<string>(type: "TEXT", nullable: false),
                     Descricao = table.Column<string>(type: "TEXT", nullable: false),
-                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FlorId = table.Column<int>(type: "INTEGER", nullable: true)
+                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Produtores_Flores_FlorId",
-                        column: x => x.FlorId,
-                        principalTable: "Flores",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Produtores_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
@@ -118,9 +112,9 @@ namespace FFCE.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     FlorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProdutorId = table.Column<int>(type: "INTEGER", nullable: false),
                     Preco = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Estoque = table.Column<int>(type: "INTEGER", nullable: false)
+                    Estoque = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProdutorId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -130,7 +124,7 @@ namespace FFCE.Migrations
                         column: x => x.FlorId,
                         principalTable: "Flores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Produtos_Produtores_ProdutorId",
                         column: x => x.ProdutorId,
@@ -164,7 +158,7 @@ namespace FFCE.Migrations
                         column: x => x.ProdutoId,
                         principalTable: "Produtos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -187,11 +181,6 @@ namespace FFCE.Migrations
                 name: "IX_ItensCarrinho_ProdutoId",
                 table: "ItensCarrinho",
                 column: "ProdutoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Produtores_FlorId",
-                table: "Produtores",
-                column: "FlorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtores_UsuarioId",
@@ -225,10 +214,10 @@ namespace FFCE.Migrations
                 name: "Clientes");
 
             migrationBuilder.DropTable(
-                name: "Produtores");
+                name: "Flores");
 
             migrationBuilder.DropTable(
-                name: "Flores");
+                name: "Produtores");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

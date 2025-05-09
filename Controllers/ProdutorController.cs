@@ -19,6 +19,7 @@ public class ProdutorController : ControllerBase
     {
         _context = context;
     }
+
     [HttpPost("cadastrar-produto")]
     public async Task<IActionResult> CadastrarProduto(ProdutoCadastroDTO dto)
     {
@@ -41,15 +42,16 @@ public class ProdutorController : ControllerBase
         _context.Produtos.Add(produto);
         await _context.SaveChangesAsync();
 
-        return Ok("Produto cadstrado com sucesso.");
+        return Ok("Produto cadastrado com sucesso.");
     }
+    
     [HttpGet("meus-produtos")]
     public async Task<IActionResult> MeusProdutos()
     {
         var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         var produtor = await _context.Produtores
             .Include(p => p.Produtos)
-            .ThenInclude(prod => prod.flor)
+            .ThenInclude(prod => prod.Flor)
             .FirstOrDefaultAsync(p => p.UsuarioId == usuarioId);
 
         if (produtor == null) return BadRequest("Produtor não encontrado.");
@@ -57,11 +59,59 @@ public class ProdutorController : ControllerBase
         var resultado = produtor.Produtos.Select(p => new
         {
             p.Id,
-            Flor = p.flor.Nome,
+            Flor = p.Flor.Nome,
             p.Preco,
             p.Estoque
         });
 
         return Ok(resultado);
+    }
+
+    [HttpPut("editar-produto/{id}")]
+    public async Task<IActionResult> EditarProduto(int id, ProdutoAtualizaDTO dto)
+    {
+        var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var produto = await _context.Produtos
+            .Include(p => p.Produtor)
+            .FirstOrDefaultAsync(p => p.Id == id && p.Produtor.UsuarioId == usuarioId);
+
+        if (produto == null)
+            return NotFound("Produto não encontrado ou acesso negado.");
+
+        if (dto.Preco.HasValue)
+            produto.Preco = dto.Preco.Value;
+
+        if (dto.Estoque.HasValue)
+            produto.Estoque = dto.Estoque.Value;
+
+        if (dto.FlorId.HasValue)
+        {
+            var florExiste = await _context.Flores.AnyAsync(f => f.Id == dto.FlorId.Value);
+            if (!florExiste) return BadRequest("Flor inválida.");
+            produto.FlorId = dto.FlorId.Value;
+        }
+
+        _context.Produtos.Update(produto);
+        await _context.SaveChangesAsync();
+
+        return Ok("Produto atualizado com sucesso.");
+    }
+
+    // DELETE: api/produtor/excluir-produto/{id}
+    [HttpDelete("excluir-produto/{id}")]
+    public async Task<IActionResult> ExcluirProduto(int id)
+    {
+        var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var produto = await _context.Produtos
+            .Include(p => p.Produtor)
+            .FirstOrDefaultAsync(p => p.Id == id && p.Produtor.UsuarioId == usuarioId);
+
+        if (produto == null)
+            return NotFound("Produto não encontrado ou acesso negado.");
+
+        _context.Produtos.Remove(produto);
+        await _context.SaveChangesAsync();
+
+        return Ok("Produto excluído com sucesso.");
     }
 }
