@@ -21,14 +21,6 @@
       "PackagePath": "staticwebassets/images/rosa-vermelha.jpg"
     },
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.html",
-      "PackagePath": "staticwebassets/scripts/login.html"
-    },
-    {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/registro.html",
-      "PackagePath": "staticwebassets/scripts/registro.html"
-    },
-    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

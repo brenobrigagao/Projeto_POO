@@ -60,29 +60,5 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"3408211"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 11:20:24 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/FFCE/scripts/login.fpz3iouywm.html">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\scripts\login.html'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"fpz3iouywm"},{"Name":"integrity","Value":"sha256-fRbglM7p8v3G2T9bOQYPJYaCK2ODF9AQ9pTnKwG5t9Q="},{"Name":"label","Value":"_content/FFCE/scripts/login.html"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1573"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022fRbglM7p8v3G2T9bOQYPJYaCK2ODF9AQ9pTnKwG5t9Q=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 11:54:21 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/FFCE/scripts/login.html">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\scripts\login.html'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-fRbglM7p8v3G2T9bOQYPJYaCK2ODF9AQ9pTnKwG5t9Q="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1573"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022fRbglM7p8v3G2T9bOQYPJYaCK2ODF9AQ9pTnKwG5t9Q=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 11:54:21 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/FFCE/scripts/registro.dxpwjnyxnb.html">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\scripts\registro.html'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"dxpwjnyxnb"},{"Name":"integrity","Value":"sha256-v6WDKQqPeD7T0qmJ4iRHH9nNHWuJkc9Y8RqYtZ0RYVs="},{"Name":"label","Value":"_content/FFCE/scripts/registro.html"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1726"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022v6WDKQqPeD7T0qmJ4iRHH9nNHWuJkc9Y8RqYtZ0RYVs=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 11:54:07 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/FFCE/scripts/registro.html">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\scripts\registro.html'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-v6WDKQqPeD7T0qmJ4iRHH9nNHWuJkc9Y8RqYtZ0RYVs="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1726"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022v6WDKQqPeD7T0qmJ4iRHH9nNHWuJkc9Y8RqYtZ0RYVs=\u0022"},{"Name":"Last-Modified","Value":"Mon, 12 May 2025 11:54:07 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
