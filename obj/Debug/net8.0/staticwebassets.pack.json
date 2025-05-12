@@ -1,8 +1,32 @@
 {
   "Files": [
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js",
-      "PackagePath": "staticwebassets/scripts/login.js"
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/cacto em pote.jpg",
+      "PackagePath": "staticwebassets/images/cacto em pote.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/cacto.jpg",
+      "PackagePath": "staticwebassets/images/cacto.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/flor branca.jpg",
+      "PackagePath": "staticwebassets/images/flor branca.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/girassol.jpg",
+      "PackagePath": "staticwebassets/images/girassol.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/rosa-vermelha.jpg",
+      "PackagePath": "staticwebassets/images/rosa-vermelha.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.html",
+      "PackagePath": "staticwebassets/scripts/login.html"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/registro.html",
+      "PackagePath": "staticwebassets/scripts/registro.html"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

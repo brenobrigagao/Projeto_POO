@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FFCE.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250509133413_InitialCreate")]
+    [Migration("20250512114549_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -126,6 +126,11 @@ namespace FFCE.Migrations
                     b.Property<int>("FlorId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("Preco")
                         .HasColumnType("TEXT");
 
@@ -203,7 +208,7 @@ namespace FFCE.Migrations
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
                 {
                     b.HasOne("FFCE.Models.Cliente", "Cliente")
-                        .WithOne("carrinho")
+                        .WithOne("Carrinho")
                         .HasForeignKey("FFCE.Models.Carrinho", "ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -278,7 +283,7 @@ namespace FFCE.Migrations
 
             modelBuilder.Entity("FFCE.Models.Cliente", b =>
                 {
-                    b.Navigation("carrinho")
+                    b.Navigation("Carrinho")
                         .IsRequired();
                 });
 

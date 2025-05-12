@@ -1,10 +1,16 @@
-namespace FFCE.Models;
-public class Carrinho
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace FFCE.Models
 {
-    public int Id { get; set; }
+    public class Carrinho
+    {
+        public int Id { get; set; }
 
-    public int ClienteId { get; set; }
-    public Cliente Cliente { get; set; } = null!;
+        [Required]
+        public int ClienteId { get; set; }
+        public Cliente Cliente { get; set; } = null!;
 
-    public List<ItemCarrinho> Itens { get; set; } = new();
+        public ICollection<ItemCarrinho> Itens { get; set; } = new List<ItemCarrinho>();
+    }
 }

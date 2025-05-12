@@ -8,7 +8,6 @@ namespace FFCE.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
-            
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -36,7 +35,7 @@ namespace FFCE.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Cliente>()
-                .HasOne(c => c.carrinho)
+                .HasOne(c => c.Carrinho)
                 .WithOne(carr => carr.Cliente)
                 .HasForeignKey<Carrinho>(carr => carr.ClienteId)
                 .OnDelete(DeleteBehavior.Cascade);
@@ -55,7 +54,7 @@ namespace FFCE.Data
 
             modelBuilder.Entity<Produto>()
                 .HasOne(p => p.Produtor)
-                .WithMany(p => p.Produtos)
+                .WithMany(prod => prod.Produtos)
                 .HasForeignKey(p => p.ProdutorId)
                 .OnDelete(DeleteBehavior.Cascade);
 
@@ -64,6 +63,13 @@ namespace FFCE.Data
                 .WithMany()
                 .HasForeignKey(i => i.ProdutoId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Produto>(entity =>
+            {
+                entity.Property(p => p.ImageName)
+                      .IsRequired()
+                      .HasMaxLength(200);
+            });
         }
     }
 }

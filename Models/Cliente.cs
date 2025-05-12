@@ -1,14 +1,16 @@
-namespace FFCE.Models;
-
-public class Cliente
+namespace FFCE.Models
 {
-    public int Id { get; set; }
-    public string Nome { get; set; } = string.Empty;
-    public string Endereco { get; set; } = string.Empty;
-    public string Telefone { get; set; } = string.Empty;
-    public string Gostos { get; set; } = string.Empty;
+    public class Cliente
+    {
+        public int    Id        { get; set; }
+        public int    UsuarioId { get; set; }
+        public Usuario Usuario  { get; set; } = null!;
 
-    public int UsuarioId { get; set; }
-    public Usuario Usuario { get; set; } = null!;
-    public Carrinho carrinho { get; set; } = null!;
+        public string Nome      { get; set; } = null!;
+        public string Telefone  { get; set; } = null!;
+        public string Endereco  { get; set; } = null!;
+        public string Gostos    { get; set; } = null!;
+
+        public Carrinho Carrinho { get; set; } = null!;
+    }
 }

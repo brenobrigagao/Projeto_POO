@@ -123,6 +123,11 @@ namespace FFCE.Migrations
                     b.Property<int>("FlorId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("Preco")
                         .HasColumnType("TEXT");
 
@@ -200,7 +205,7 @@ namespace FFCE.Migrations
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
                 {
                     b.HasOne("FFCE.Models.Cliente", "Cliente")
-                        .WithOne("carrinho")
+                        .WithOne("Carrinho")
                         .HasForeignKey("FFCE.Models.Carrinho", "ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -275,7 +280,7 @@ namespace FFCE.Migrations
 
             modelBuilder.Entity("FFCE.Models.Cliente", b =>
                 {
-                    b.Navigation("carrinho")
+                    b.Navigation("Carrinho")
                         .IsRequired();
                 });
 
