@@ -75,6 +75,11 @@ namespace FFCE.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -125,7 +130,6 @@ namespace FFCE.Migrations
 
                     b.Property<string>("ImageName")
                         .IsRequired()
-                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Preco")
@@ -136,7 +140,8 @@ namespace FFCE.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FlorId");
+                    b.HasIndex("FlorId")
+                        .IsUnique();
 
                     b.HasIndex("ProdutorId");
 
@@ -246,8 +251,8 @@ namespace FFCE.Migrations
             modelBuilder.Entity("FFCE.Models.Produto", b =>
                 {
                     b.HasOne("FFCE.Models.Flor", "Flor")
-                        .WithMany("Produtos")
-                        .HasForeignKey("FlorId")
+                        .WithOne()
+                        .HasForeignKey("FFCE.Models.Produto", "FlorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -282,11 +287,6 @@ namespace FFCE.Migrations
                 {
                     b.Navigation("Carrinho")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FFCE.Models.Flor", b =>
-                {
-                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("FFCE.Models.Produtor", b =>
