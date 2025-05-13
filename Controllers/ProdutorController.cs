@@ -25,7 +25,20 @@ namespace FFCE.Controllers
             _context = context;
             _env = env;
         }
-
+        [HttpGet("listar-flores")]
+        public async Task<IActionResult> ListarFlores()
+        {
+            var flores = await _context.Flores
+            .Select(f => new
+            {
+                f.Id,
+                f.Nome,
+                f.Descricao,
+                 ImageUrl = $"{Request.Scheme}://{Request.Host}/images/{f.ImageName}"
+            })
+            .ToListAsync();
+            return Ok(flores);
+        }
         [HttpPost("cadastrar-produto")]
         public async Task<IActionResult> CadastrarProduto([FromBody] ProdutoCadastroDTO dto)
         {
