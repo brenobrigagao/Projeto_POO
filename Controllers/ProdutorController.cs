@@ -36,13 +36,13 @@ namespace FFCE.Controllers
             if (produtor == null)
                 return BadRequest("Produtor não encontrado.");
 
-            var florExiste = await _context.Flores
-                .AnyAsync(f => f.Id == dto.FlorId);
-            if (!florExiste)
+            var flor = await _context.Flores
+                .FirstOrDefaultAsync(f => f.Id == dto.FlorId);
+            if (flor == null)
                 return BadRequest("Flor inválida.");
 
             var imagesFolder = Path.Combine(_env.WebRootPath, "images");
-            var imagePath = Path.Combine(imagesFolder, dto.ImageName);
+            var imagePath = Path.Combine(imagesFolder, flor.ImageName);
             if (!System.IO.File.Exists(imagePath))
                 return BadRequest("Imagem selecionada não encontrada.");
 
@@ -52,7 +52,6 @@ namespace FFCE.Controllers
                 ProdutorId = produtor.Id,
                 Preco      = dto.Preco,
                 Estoque    = dto.Estoque,
-                ImageName  = dto.ImageName
             };
 
             _context.Produtos.Add(produto);
@@ -82,7 +81,7 @@ namespace FFCE.Controllers
                 Flor      = p.Flor.Nome,
                 p.Preco,
                 p.Estoque,
-                ImageUrl  = $"{baseUrl}{p.ImageName}"
+                ImageUrl  = $"{baseUrl}{p.Flor.ImageName}"
             });
 
             return Ok(resultado);
@@ -107,20 +106,16 @@ namespace FFCE.Controllers
 
             if (dto.FlorId.HasValue)
             {
-                var florExiste = await _context.Flores
-                    .AnyAsync(f => f.Id == dto.FlorId.Value);
-                if (!florExiste)
+                var flor = await _context.Flores
+                    .FirstOrDefaultAsync(f => f.Id == dto.FlorId.Value);
+                if (flor == null)
                     return BadRequest("Flor inválida.");
-                produto.FlorId = dto.FlorId.Value;
-            }
 
-            if (!string.IsNullOrWhiteSpace(dto.ImageName))
-            {
-                var imagesFolder = Path.Combine(_env.WebRootPath, "images");
-                var imagePath    = Path.Combine(imagesFolder, dto.ImageName);
+                    var imagesFolder = Path.Combine(_env.WebRootPath, "images");
+                    var imagePath = Path.Combine(imagesFolder, flor.ImageName);
                 if (!System.IO.File.Exists(imagePath))
-                    return BadRequest("Imagem selecionada não encontrada.");
-                produto.ImageName = dto.ImageName;
+                    return BadRequest("Imagem da flor não encontrada.");
+                produto.FlorId = dto.FlorId.Value;
             }
 
             _context.Produtos.Update(produto);

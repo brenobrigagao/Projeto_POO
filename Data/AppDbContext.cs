@@ -48,8 +48,8 @@ namespace FFCE.Data
 
             modelBuilder.Entity<Produto>()
                 .HasOne(p => p.Flor)
-                .WithMany(f => f.Produtos)
-                .HasForeignKey(p => p.FlorId)
+                .WithOne()
+                .HasForeignKey<Produto>(p => p.FlorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Produto>()
@@ -63,12 +63,11 @@ namespace FFCE.Data
                 .WithMany()
                 .HasForeignKey(i => i.ProdutoId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Produto>(entity =>
+            modelBuilder.Entity<Flor>(entity => 
             {
-                entity.Property(p => p.ImageName)
-                      .IsRequired()
-                      .HasMaxLength(200);
+                entity.Property(f => f.ImageName)
+                .IsRequired()
+                .HasMaxLength(200);
             });
         }
     }
