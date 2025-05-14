@@ -3239,19 +3239,19 @@
     ]
   },
   "packageFolders": {
-    "/home/matheuscastelo/.nuget/packages/": {}
+    "/home/breno/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/FFCE.csproj",
+      "projectUniqueName": "/home/breno/Área de Trabalho/Projeto_POO/FFCE.csproj",
       "projectName": "FFCE",
-      "projectPath": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/FFCE.csproj",
-      "packagesPath": "/home/matheuscastelo/.nuget/packages/",
-      "outputPath": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/",
+      "projectPath": "/home/breno/Área de Trabalho/Projeto_POO/FFCE.csproj",
+      "packagesPath": "/home/breno/.nuget/packages/",
+      "outputPath": "/home/breno/Área de Trabalho/Projeto_POO/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/matheuscastelo/.nuget/NuGet/NuGet.Config"
+        "/home/breno/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3274,8 +3274,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
+<<<<<<< HEAD
       },
       "SdkAnalysisLevel": "10.0.100"
+=======
+      }
+>>>>>>> dev-matheuscastelo
     },
     "frameworks": {
       "net8.0": {
@@ -3359,6 +3363,7 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "/home/matheuscastelo/.dotnet/sdk/10.0.100-preview.1.25120.13/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(, 8.0.0]",
@@ -3789,6 +3794,9 @@
           "System.Xml.XPath": "(, 4.3.0]",
           "System.Xml.XPath.XDocument": "(, 4.3.0]"
         }
+=======
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+>>>>>>> dev-matheuscastelo
       }
     }
   }

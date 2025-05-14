@@ -17,7 +17,8 @@ namespace FFCE.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
-                    Descricao = table.Column<string>(type: "TEXT", nullable: false)
+                    Descricao = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageName = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,7 +116,7 @@ namespace FFCE.Migrations
                     ProdutorId = table.Column<int>(type: "INTEGER", nullable: false),
                     Preco = table.Column<decimal>(type: "TEXT", nullable: false),
                     Estoque = table.Column<int>(type: "INTEGER", nullable: false),
-                    ImageName = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false)
+                    ImageName = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -191,7 +192,8 @@ namespace FFCE.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_FlorId",
                 table: "Produtos",
-                column: "FlorId");
+                column: "FlorId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_ProdutorId",

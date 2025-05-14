@@ -1,28 +1,24 @@
 {
   "Files": [
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/cacto em pote.jpg",
+      "Id": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/cacto em pote.jpg",
       "PackagePath": "staticwebassets/images/cacto em pote.jpg"
     },
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/cacto.jpg",
+      "Id": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/cacto.jpg",
       "PackagePath": "staticwebassets/images/cacto.jpg"
     },
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/flor branca.jpg",
+      "Id": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/flor branca.jpg",
       "PackagePath": "staticwebassets/images/flor branca.jpg"
     },
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/girassol.jpg",
+      "Id": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/girassol.jpg",
       "PackagePath": "staticwebassets/images/girassol.jpg"
     },
     {
-      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/images/rosa-vermelha.jpg",
+      "Id": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/rosa-vermelha.jpg",
       "PackagePath": "staticwebassets/images/rosa-vermelha.jpg"
-    },
-    {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
-      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssets.props",
