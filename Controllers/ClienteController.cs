@@ -40,8 +40,8 @@ namespace FFCE.Controllers
             return Ok(produtos);
         }
         [HttpPost("adicionar-carrinho")]
-    public async Task<IActionResult> AdicionarAoCarrinho(AddCarrinhoDTO dto)
-    {
+        public async Task<IActionResult> AdicionarAoCarrinho(AddCarrinhoDTO dto)
+        {
         var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
         var cliente = await _context.Clientes
@@ -73,7 +73,7 @@ namespace FFCE.Controllers
 
         await _context.SaveChangesAsync();
         return Ok("Produto adicionado ao carrinho");
-    }
+        }
     }
 
     
