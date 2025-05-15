@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FFCE.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250513161243_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250515115625_SeedDeFlores")]
+    partial class SeedDeFlores
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,6 +90,43 @@ namespace FFCE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Flores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descricao = "Cacto decorativo em vaso de cerâmica",
+                            ImageName = "cacto em pote.jpg",
+                            Nome = "Cacto em Pote"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Flor de pétalas brancas, ideal para arranjos clean",
+                            ImageName = "flor branca.jpg",
+                            Nome = "Flor Branca"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descricao = "Clássica rosa vermelha, símbolo de paixão",
+                            ImageName = "rosa-vermelha.jpg",
+                            Nome = "Rosa Vermelha"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descricao = "Cacto pequeno, resistente e de fácil manutenção",
+                            ImageName = "cacto.jpg",
+                            Nome = "Cacto Simples"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descricao = "Girassol vibrante, traz alegria aos ambientes",
+                            ImageName = "girassol.jpg",
+                            Nome = "Girassol"
+                        });
                 });
 
             modelBuilder.Entity("FFCE.Models.ItemCarrinho", b =>

@@ -2,6 +2,7 @@
 using FFCE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FFCE.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250515114805_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -87,43 +90,6 @@ namespace FFCE.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Flores");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Descricao = "Cacto decorativo em vaso de cerâmica",
-                            ImageName = "cactoempote.jpg",
-                            Nome = "Cacto em Pote"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Descricao = "Flor de pétalas brancas, ideal para arranjos clean",
-                            ImageName = "florbranca.jpg",
-                            Nome = "Flor Branca"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Descricao = "Clássica rosa vermelha, símbolo de paixão",
-                            ImageName = "rosavermelha.jpg",
-                            Nome = "Rosa Vermelha"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Descricao = "Cacto pequeno, resistente e de fácil manutenção",
-                            ImageName = "cacto.jpg",
-                            Nome = "Cacto Simples"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Descricao = "Girassol vibrante, traz alegria aos ambientes",
-                            ImageName = "girassol.jpg",
-                            Nome = "Girassol"
-                        });
                 });
 
             modelBuilder.Entity("FFCE.Models.ItemCarrinho", b =>

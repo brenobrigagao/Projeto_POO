@@ -95,7 +95,7 @@ namespace FFCE.Controllers
                     Endereco   = dto.Endereco,
                     Gostos     = dto.Gostos!,
                     UsuarioId  = usuarioId,
-                    Carrinho   = new Carrinho()  // EF vai popular ClienteId automaticamente
+                    Carrinho   = new Carrinho()  
                 };
                 _context.Clientes.Add(cliente);
             }

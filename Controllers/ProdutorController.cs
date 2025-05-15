@@ -55,7 +55,7 @@ namespace FFCE.Controllers
                 return BadRequest("Flor inválida.");
 
             var imagesFolder = Path.Combine(_env.WebRootPath, "images");
-            var imagePath = Path.Combine(imagesFolder, flor.ImageName);
+            var imagePath   = Path.Combine(imagesFolder, flor.ImageName);
             if (!System.IO.File.Exists(imagePath))
                 return BadRequest("Imagem selecionada não encontrada.");
 
@@ -65,6 +65,7 @@ namespace FFCE.Controllers
                 ProdutorId = produtor.Id,
                 Preco      = dto.Preco,
                 Estoque    = dto.Estoque,
+                ImageName  = flor.ImageName    
             };
 
             _context.Produtos.Add(produto);
@@ -72,6 +73,7 @@ namespace FFCE.Controllers
 
             return Ok("Produto cadastrado com sucesso.");
         }
+
 
         [HttpGet("meus-produtos")]
         public async Task<IActionResult> MeusProdutos()

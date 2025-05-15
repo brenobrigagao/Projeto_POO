@@ -40,14 +40,12 @@ namespace FFCE.Controllers
             if (file == null || file.Length == 0)
                 return BadRequest("Arquivo inválido.");
 
-            // opcional: validar extensão/filetype
             var allowed = new[] { ".jpg", ".jpeg", ".png", ".gif" };
             var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
             if (!allowed.Contains(ext))
                 return BadRequest("Tipo de arquivo não permitido.");
 
             var savePath = Path.Combine(_imagesPath, file.FileName);
-            // se já existir, opcionalmente retornar conflito
             if (System.IO.File.Exists(savePath))
                 return Conflict("Arquivo já existe.");
 

@@ -63,12 +63,53 @@ namespace FFCE.Data
                 .WithMany()
                 .HasForeignKey(i => i.ProdutoId)
                 .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Flor>(entity => 
+
+            modelBuilder.Entity<Flor>(entity =>
             {
                 entity.Property(f => f.ImageName)
-                .IsRequired()
-                .HasMaxLength(200);
+                      .IsRequired()
+                      .HasMaxLength(200);
             });
-        }
-    }
+
+            modelBuilder.Entity<Flor>().HasData(
+                new Flor
+                {
+                    Id = 1,
+                    Nome = "Cacto em Pote",
+                    Descricao = "Cacto decorativo em vaso de cerâmica",
+                    ImageName = "cactoempote.jpg"
+                },
+                new Flor
+                {
+                    Id = 2,
+                    Nome = "Flor Branca",
+                    Descricao = "Flor de pétalas brancas, ideal para arranjos clean",
+                    ImageName = "florbranca.jpg"
+                },
+                new Flor
+                {
+                    Id = 3,
+                    Nome = "Rosa Vermelha",
+                    Descricao = "Clássica rosa vermelha, símbolo de paixão",
+                    ImageName = "rosavermelha.jpg"
+                },
+                new Flor
+                {
+                    Id = 4,
+                    Nome = "Cacto Simples",
+                    Descricao = "Cacto pequeno, resistente e de fácil manutenção",
+                    ImageName = "cacto.jpg"
+                },
+                new Flor
+                {
+                    Id = 5,
+                    Nome = "Girassol",
+                    Descricao = "Girassol vibrante, traz alegria aos ambientes",
+                    ImageName = "girassol.jpg"
+                }
+            );  
+
+        } 
+
+    } 
 }
