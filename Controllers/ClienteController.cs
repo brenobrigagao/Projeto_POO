@@ -55,7 +55,7 @@ namespace FFCE.Controllers
         if(dto.Quantidade <= 0) return BadRequest("Quantidade inválida");
         
         var itemExistente = await _context.ItensCarrinho
-        .FirstOrDefaultAsync(i => i.CarrinhoId == cliente.Carrinho.Id && i.ProdutoId == dto.ProdutoId);
+        .FirstOrDefaultAsync(i => cliente != null && i.CarrinhoId == cliente.Carrinho.Id && i.ProdutoId == dto.ProdutoId);
         
         if(itemExistente != null)
         {
@@ -63,18 +63,68 @@ namespace FFCE.Controllers
         }
         else
         {
-            var novoItem = new ItemCarrinho {
-                CarrinhoId = cliente.Carrinho.Id,
-                ProdutoId = dto.ProdutoId,
-                Quantidade = dto.Quantidade
-            };
-            _context.ItensCarrinho.Add(novoItem);
+            if (cliente != null)
+            {
+                var novoItem = new ItemCarrinho {
+                    CarrinhoId = cliente.Carrinho.Id,
+                    ProdutoId = dto.ProdutoId,
+                    Quantidade = dto.Quantidade
+                };
+                _context.ItensCarrinho.Add(novoItem);
+            }
         }
 
         await _context.SaveChangesAsync();
         return Ok("Produto adicionado ao carrinho");
         }
+        
+        [HttpGet("meu-carrinho")]
+        public async Task<IActionResult> VerCarrinho()
+        {
+            var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            var cliente = await _context.Clientes
+                .Include(c => c.Carrinho)
+                .ThenInclude(c => c.Itens)
+                .ThenInclude(i => i.Produto)
+                .ThenInclude(p => p.Flor)
+                .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+
+            if (cliente == null)
+                return NotFound("Cliente não encontrado");
+
+            if (cliente.Carrinho?.Itens == null)
+                return Ok(new { Items = new List<object>(), ValorTotal = 0m });
+
+            var itensCarrinho = cliente.Carrinho.Itens.Select(item =>
+            {
+                if (item.Produto.Flor != null)
+                    return new
+                    {
+                        ProdutoId = item.ProdutoId,
+                        NomeFlor = item.Produto.Flor.Nome,
+                        Quantidade = item.Quantidade,
+                        PrecoUnitario = item.Produto.Preco,
+                        SubTotal = item.Quantidade * item.Produto.Preco
+                    };
+                return null;
+            }).ToList();
+
+            var valorTotal = itensCarrinho.Sum(item =>
+            {
+                if (item != null) return item.SubTotal;
+                return null;
+            });
+
+            return Ok(new
+            {
+                Items = itensCarrinho,
+                ValorTotal = valorTotal
+            });
+        }
+        
     }
+    
 
     
 }

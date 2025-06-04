@@ -88,13 +88,18 @@ namespace FFCE.Controllers
 
             var baseUrl = $"{Request.Scheme}://{Request.Host}/images/";
 
-            var resultado = produtor.Produtos.Select(p => new
+            var resultado = produtor.Produtos.Select(p =>
             {
-                p.Id,
-                Flor      = p.Flor.Nome,
-                p.Preco,
-                p.Estoque,
-                ImageUrl  = $"{baseUrl}{p.Flor.ImageName}"
+                if (p.Flor != null)
+                    return new
+                    {
+                        p.Id,
+                        Flor = p.Flor.Nome,
+                        p.Preco,
+                        p.Estoque,
+                        ImageUrl = $"{baseUrl}{p.Flor.ImageName}"
+                    };
+                return null;
             });
 
             return Ok(resultado);
@@ -107,7 +112,7 @@ namespace FFCE.Controllers
 
             var produto = await _context.Produtos
                 .Include(p => p.Produtor)
-                .FirstOrDefaultAsync(p => p.Id == id && p.Produtor.UsuarioId == usuarioId);
+                .FirstOrDefaultAsync(p => p.Id == id && p.Produtor != null && p.Produtor.UsuarioId == usuarioId);
 
             if (produto == null)
                 return NotFound("Produto não encontrado ou acesso negado.");
@@ -144,7 +149,7 @@ namespace FFCE.Controllers
 
             var produto = await _context.Produtos
                 .Include(p => p.Produtor)
-                .FirstOrDefaultAsync(p => p.Id == id && p.Produtor.UsuarioId == usuarioId);
+                .FirstOrDefaultAsync(p => p.Id == id && p.Produtor != null && p.Produtor.UsuarioId == usuarioId);
 
             if (produto == null)
                 return NotFound("Produto não encontrado ou acesso negado.");
