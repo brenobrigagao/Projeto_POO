@@ -26,14 +26,7 @@ async function login() {
     localStorage.setItem("role", data.role);
     localStorage.setItem("userId", data.id);
 
-    mensagemEl.innerText = "Login efetuado com sucesso!";
-    if (data.role === "Produtor") {
-        window.location.href = "/cadastro-produtor.html";
-    } else if (data.role === "Cliente") {
-        window.location.href = "/cadastro-cliente.html";
-    } else {
-         document.getElementById("mensagem").innerText = "Role inválida.";
-    }
+    verificarCadastro();
   } catch (error) {
     mensagemEl.innerText = "Erro na comunicação com o servidor.";
     console.error(error);
