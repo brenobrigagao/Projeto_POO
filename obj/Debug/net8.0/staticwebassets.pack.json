@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets/images/rosavermelha.jpg"
     },
     {
+      "Id": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/scripts/registrar .js",
+      "PackagePath": "staticwebassets/images/scripts/registrar .js"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

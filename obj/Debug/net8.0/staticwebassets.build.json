@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0oOXfQAfl+JTuxkhUmx01eO9Ef7O28UClbfKbGdt400=",
+  "Hash": "Tau4KZmAmnrkXSMjFqNn+9PlRD+twagl5nHccpPFCQ4=",
   "Source": "FFCE",
   "BasePath": "_content/FFCE",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/rosavermelha.jpg"
+    },
+    {
+      "Identity": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/images/scripts/registrar .js",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/breno/Área de Trabalho/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "images/scripts/registrar .js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/scripts/registrar .js"
     }
   ]
 }
