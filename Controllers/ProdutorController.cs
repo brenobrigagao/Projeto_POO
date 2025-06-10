@@ -47,17 +47,17 @@ namespace FFCE.Controllers
             var produtor = await _context.Produtores
                 .FirstOrDefaultAsync(p => p.UsuarioId == usuarioId);
             if (produtor == null)
-                return BadRequest("Produtor não encontrado.");
+                return BadRequest(new { message = "Produtor não encontrado." });
 
             var flor = await _context.Flores
                 .FirstOrDefaultAsync(f => f.Id == dto.FlorId);
             if (flor == null)
-                return BadRequest("Flor inválida.");
+                return BadRequest(new { message = "Flor inválida." });
 
             var imagesFolder = Path.Combine(_env.WebRootPath, "images");
             var imagePath = Path.Combine(imagesFolder, flor.ImageName);
             if (!System.IO.File.Exists(imagePath))
-                return BadRequest("Imagem selecionada não encontrada.");
+                return BadRequest(new { message = "Imagem selecionada não encontrada." });
 
             var produto = new Produto
             {
@@ -70,7 +70,7 @@ namespace FFCE.Controllers
             _context.Produtos.Add(produto);
             await _context.SaveChangesAsync();
 
-            return Ok("Produto cadastrado com sucesso.");
+            return Ok(new { message = "Produto cadastrado com sucesso." });
         }
 
         [HttpGet("meus-produtos")]
@@ -84,7 +84,7 @@ namespace FFCE.Controllers
                 .FirstOrDefaultAsync(p => p.UsuarioId == usuarioId);
 
             if (produtor == null)
-                return BadRequest("Produtor não encontrado.");
+                return BadRequest(new { message = "Produtor não encontrado." });
 
             var baseUrl = $"{Request.Scheme}://{Request.Host}/images/";
 
@@ -115,7 +115,7 @@ namespace FFCE.Controllers
                 .FirstOrDefaultAsync(p => p.Id == id && p.Produtor != null && p.Produtor.UsuarioId == usuarioId);
 
             if (produto == null)
-                return NotFound("Produto não encontrado ou acesso negado.");
+                return NotFound(new { message = "Produto não encontrado ou acesso negado." });
 
             if (dto.Preco.HasValue)
                 produto.Preco = dto.Preco.Value;
@@ -127,19 +127,19 @@ namespace FFCE.Controllers
                 var flor = await _context.Flores
                     .FirstOrDefaultAsync(f => f.Id == dto.FlorId.Value);
                 if (flor == null)
-                    return BadRequest("Flor inválida.");
+                    return BadRequest(new { message = "Flor inválida." });
 
                     var imagesFolder = Path.Combine(_env.WebRootPath, "images");
                     var imagePath = Path.Combine(imagesFolder, flor.ImageName);
                 if (!System.IO.File.Exists(imagePath))
-                    return BadRequest("Imagem da flor não encontrada.");
+                    return BadRequest(new { message = "Imagem da flor não encontrada." });
                 produto.FlorId = dto.FlorId.Value;
             }
 
             _context.Produtos.Update(produto);
             await _context.SaveChangesAsync();
 
-            return Ok("Produto atualizado com sucesso.");
+            return Ok(new { message = "Produto atualizado com sucesso." });
         }
 
         [HttpDelete("excluir-produto/{id}")]
@@ -152,12 +152,12 @@ namespace FFCE.Controllers
                 .FirstOrDefaultAsync(p => p.Id == id && p.Produtor != null && p.Produtor.UsuarioId == usuarioId);
 
             if (produto == null)
-                return NotFound("Produto não encontrado ou acesso negado.");
+                return NotFound(new { message = "Produto não encontrado ou acesso negado." });
 
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
 
-            return Ok("Produto excluído com sucesso.");
+            return Ok(new { message = "Produto excluído com sucesso." });
         }
     }
 }

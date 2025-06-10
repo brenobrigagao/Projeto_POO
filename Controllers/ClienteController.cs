@@ -50,9 +50,9 @@ namespace FFCE.Controllers
         
         var produto = await _context.Produtos.FindAsync(dto.ProdutoId);
         
-        if(produto == null) return NotFound("Produto não encontrado");
+        if(produto == null) return NotFound(new { message = "Produto não encontrado" });
         
-        if(dto.Quantidade <= 0) return BadRequest("Quantidade inválida");
+        if(dto.Quantidade <= 0) return BadRequest(new { message = "Quantidade inválida" });
         
         var itemExistente = await _context.ItensCarrinho
         .FirstOrDefaultAsync(i => cliente != null && i.CarrinhoId == cliente.Carrinho.Id && i.ProdutoId == dto.ProdutoId);
@@ -75,7 +75,7 @@ namespace FFCE.Controllers
         }
 
         await _context.SaveChangesAsync();
-        return Ok("Produto adicionado ao carrinho");
+        return Ok(new { message = "Produto adicionado ao carrinho" });
         }
         
         [HttpGet("meu-carrinho")]
@@ -91,7 +91,7 @@ namespace FFCE.Controllers
                 .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
 
             if (cliente == null)
-                return NotFound("Cliente não encontrado");
+                return NotFound(new { message = "Cliente não encontrado" });
 
             if (cliente.Carrinho?.Itens == null)
                 return Ok(new { Items = new List<object>(), ValorTotal = 0m });

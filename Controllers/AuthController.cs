@@ -28,7 +28,7 @@ namespace FFCE.Controllers
         {
             var exists = await _context.Usuarios.AnyAsync(u => u.Email == dto.Email);
             if (exists)
-                return BadRequest("Email já cadastrado.");
+                return BadRequest(new { message = "Email já cadastrado." });
 
             var usuario = new Usuario
             {
@@ -50,7 +50,7 @@ namespace FFCE.Controllers
                 .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, usuario.SenhaHash))
-                return Unauthorized("Credenciais inválidas!");
+                return Unauthorized(new { message = "Credenciais inválidas!" });
 
             var token = _tokenService.GenerateToken(usuario);
 
@@ -71,7 +71,7 @@ namespace FFCE.Controllers
 
             var usuario = await _context.Usuarios.FindAsync(usuarioId);
             if (usuario == null)
-                return NotFound("Usuário não encontrado!");
+                return NotFound(new { message = "Usuário não encontrado!" });
 
             if (usuario.Role == "Produtor")
             {
@@ -101,11 +101,11 @@ namespace FFCE.Controllers
             }
             else
             {
-                return BadRequest("Role inválida para completar o cadastro!");
+                return BadRequest(new { message = "Role inválida para completar o cadastro!" });
             }
 
             await _context.SaveChangesAsync();
-            return Ok("Cadastro completo com sucesso!");
+            return Ok(new { message = "Cadastro completo com sucesso!" });
         }
 
         
@@ -117,7 +117,7 @@ namespace FFCE.Controllers
 
             var usuario = await _context.Usuarios.FindAsync(usuarioId);
             if (usuario == null)
-                return NotFound("Usuário não encontrado!");
+                return NotFound(new { message = "Usuário não encontrado!" });
 
             bool cadastroCompleto;
             if (usuario.Role == "Produtor")
@@ -132,7 +132,7 @@ namespace FFCE.Controllers
             }
             else
             {
-                return BadRequest("Role desconhecida.");
+                return BadRequest(new { message = "Role desconhecida." });
             }
             return Ok(new { cadastroCompleto });
         }

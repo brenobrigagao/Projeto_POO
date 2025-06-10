@@ -1,0 +1,11 @@
+bin/
+obj/
+*.dll
+*.pdb
+*.cache
+*.json
+*.props
+*.targets
+*.editorconfig
+.idea/
+
