@@ -23,6 +23,13 @@ body {
   overflow-y: auto;
 }
 
+body > header {
+  background: #2f4f4f;
+  color: #fff;
+  font-size: 24px;
+  padding: 20px 0;
+  text-align: left;
+}
 
 a {
   color: inherit;
