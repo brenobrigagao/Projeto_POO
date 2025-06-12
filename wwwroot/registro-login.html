@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Registro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-500 to-purple-600 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg mb-6 md:hidden">
+        <h1 class="text-3xl font-extrabold text-center text-gray-900">Bem-vindo(a)!</h1>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-6 w-full max-w-6xl">
+        <!-- Main Form Container -->
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-full md:w-1/2 space-y-6">
+            <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-8 hidden md:block">Bem-vindo(a)!</h1>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <button id="showLoginBtn" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out font-semibold flex-grow md:flex-grow-0">Login</button>
+                <button id="showClientRegisterBtn" class="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out font-semibold flex-grow md:flex-grow-0">Registro Cliente</button>
+                <button id="showProducerRegisterBtn" class="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300 ease-in-out font-semibold flex-grow md:flex-grow-0">Registro Produtor</button>
+            </div>
+
+            <!-- Message Display Area -->
+            <div id="message" class="hidden p-4 rounded-lg text-center font-medium"></div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="active-form">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Entrar</h2>
+                <form id="login" class="space-y-4">
+                    <div>
+                        <label for="loginEmail" class="block text-gray-700 text-sm font-medium mb-1">Email:</label>
+                        <input type="email" id="loginEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="loginPassword" class="block text-gray-700 text-sm font-medium mb-1">Senha:</label>
+                        <input type="password" id="loginPassword" name="senha" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200" required>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out font-bold text-lg">Login</button>
+                </form>
+            </div>
+
+            <!-- Client Registration Form -->
+            <div id="clientRegisterForm" class="hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Registro de Cliente</h2>
+                <form id="registro-cliente" class="space-y-4">
+                    <div>
+                        <label for="clientName" class="block text-gray-700 text-sm font-medium mb-1">Nome:</label>
+                        <input type="text" id="clientName" name="nome" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="clientPhone" class="block text-gray-700 text-sm font-medium mb-1">Telefone:</label>
+                        <input type="tel" id="clientPhone" name="telefone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="clientAddress" class="block text-gray-700 text-sm font-medium mb-1">Endereço:</label>
+                        <input type="text" id="clientAddress" name="endereco" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="clientGostos" class="block text-gray-700 text-sm font-medium mb-1">Gostos (Ex: flores, plantas):</label>
+                        <input type="text" id="clientGostos" name="gostos" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-200">
+                    </div>
+                    <div>
+                        <label for="clientEmail" class="block text-gray-700 text-sm font-medium mb-1">Email:</label>
+                        <input type="email" id="clientEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="clientPassword" class="block text-gray-700 text-sm font-medium mb-1">Senha:</label>
+                        <input type="password" id="clientPassword" name="senha" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-200" required>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out font-bold text-lg">Registrar Cliente</button>
+                </form>
+            </div>
+
+            <!-- Producer Registration Form -->
+            <div id="producerRegisterForm" class="hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Registro de Produtor</h2>
+                <form id="registro-produtor" class="space-y-4">
+                    <div>
+                        <label for="producerName" class="block text-gray-700 text-sm font-medium mb-1">Nome:</label>
+                        <input type="text" id="producerName" name="nome" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="producerPhone" class="block text-gray-700 text-sm font-medium mb-1">Telefone:</label>
+                        <input type="tel" id="producerPhone" name="telefone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="producerAddress" class="block text-gray-700 text-sm font-medium mb-1">Endereço:</label>
+                        <input type="text" id="producerAddress" name="endereco" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="producerStoreName" class="block text-gray-700 text-sm font-medium mb-1">Nome da Loja:</label>
+                        <input type="text" id="producerStoreName" name="nomeLoja" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="producerDescription" class="block text-gray-700 text-sm font-medium mb-1">Descrição (Ex: tipos de flores, produtos):</label>
+                        <textarea id="producerDescription" name="descricao" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200"></textarea>
+                    </div>
+                    <div>
+                        <label for="producerEmail" class="block text-gray-700 text-sm font-medium mb-1">Email:</label>
+                        <input type="email" id="producerEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="producerPassword" class="block text-gray-700 text-sm font-medium mb-1">Senha:</label>
+                        <input type="password" id="producerPassword" name="senha" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300 ease-in-out font-bold text-lg">Registrar Produtor</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- API Response Display Area -->
+        <div class="bg-gray-800 p-6 rounded-xl shadow-2xl w-full md:w-1/2 overflow-auto relative">
+            <h2 class="text-xl font-bold text-white mb-4">Retorno da API</h2>
+            <button id="clearApiResponseBtn" class="absolute top-4 right-4 bg-gray-600 text-white text-sm px-3 py-1 rounded-md hover:bg-gray-700 transition duration-300">Limpar</button>
+            <pre class="bg-gray-900 p-4 rounded-lg text-green-300 text-sm overflow-x-auto min-h-[200px] md:min-h-[500px] lg:min-h-[600px] resize-y" style="max-height: 80vh;"><code id="apiResponseContent"></code></pre>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5211/api/Auth';
+
+        // Get elements
+        const loginForm = document.getElementById('loginForm');
+        const clientRegisterForm = document.getElementById('clientRegisterForm');
+        const producerRegisterForm = document.getElementById('producerRegisterForm');
+        const messageDiv = document.getElementById('message');
+        const apiResponseContent = document.getElementById('apiResponseContent');
+        const clearApiResponseBtn = document.getElementById('clearApiResponseBtn');
+
+        const showLoginBtn = document.getElementById('showLoginBtn');
+        const showClientRegisterBtn = document.getElementById('showClientRegisterBtn');
+        const showProducerRegisterBtn = document.getElementById('showProducerRegisterBtn');
+
+        // Function to show message
+        function showMessage(msg, type = 'success') {
+            messageDiv.textContent = msg;
+            messageDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            if (type === 'success') {
+                messageDiv.classList.add('bg-green-100', 'text-green-700');
+            } else {
+                messageDiv.classList.add('bg-red-100', 'text-red-700');
+            }
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Function to display API response
+        function displayApiResponse(data) {
+            try {
+                // Prettify JSON output
+                apiResponseContent.textContent = JSON.stringify(data, null, 2);
+            } catch (e) {
+                // If it's not JSON, display as plain text
+                apiResponseContent.textContent = data;
+            }
+        }
+
+        // Function to clear API response
+        clearApiResponseBtn.addEventListener('click', () => {
+            apiResponseContent.textContent = '';
+        });
+
+        // Function to switch active form
+        function showForm(formToShow) {
+            loginForm.classList.add('hidden');
+            clientRegisterForm.classList.add('hidden');
+            producerRegisterForm.classList.add('hidden');
+
+            formToShow.classList.remove('hidden');
+            messageDiv.classList.add('hidden'); // Clear previous messages
+        }
+
+        // Event listeners for navigation buttons
+        showLoginBtn.addEventListener('click', () => showForm(loginForm));
+        showClientRegisterBtn.addEventListener('click', () => showForm(clientRegisterForm));
+        showProducerRegisterBtn.addEventListener('click', () => showForm(producerRegisterForm));
+
+        // Handle Login Form Submission
+        document.getElementById('login').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const senha = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, senha })
+                });
+
+                if (response.ok) {
+                    const data = await response.json(); // Assuming API returns data like a token
+                    console.log('Login successful:', data);
+                    showMessage('Login realizado com sucesso!', 'success');
+                    displayApiResponse(data);
+                    document.getElementById('login').reset();
+                } else {
+                    const errorData = await response.json();
+                    console.error('Login failed:', errorData);
+                    showMessage(`Erro no login: ${errorData.message || response.statusText}`, 'error');
+                    displayApiResponse(errorData);
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                showMessage('Erro ao conectar com o servidor. Tente novamente.', 'error');
+                displayApiResponse({ error: error.message, status: 'Network Error' });
+            }
+        });
+
+        // Handle Client Registration Form Submission
+        document.getElementById('registro-cliente').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/registro-cliente`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const responseData = await response.json(); // Even if 200 OK, might return data
+                    console.log('Client registration successful!');
+                    showMessage('Registro de cliente realizado com sucesso!', 'success');
+                    displayApiResponse(responseData);
+                    document.getElementById('registro-cliente').reset();
+                    showForm(loginForm); // Optionally redirect to login after successful registration
+                } else {
+                    const errorData = await response.json();
+                    console.error('Client registration failed:', errorData);
+                    showMessage(`Erro no registro de cliente: ${errorData.message || response.statusText}`, 'error');
+                    displayApiResponse(errorData);
+                }
+            } catch (error) {
+                console.error('Error during client registration:', error);
+                showMessage('Erro ao conectar com o servidor. Tente novamente.', 'error');
+                displayApiResponse({ error: error.message, status: 'Network Error' });
+            }
+        });
+
+        // Handle Producer Registration Form Submission
+        document.getElementById('registro-produtor').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/registro-produtor`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const responseData = await response.json(); // Even if 200 OK, might return data
+                    console.log('Producer registration successful!');
+                    showMessage('Registro de produtor realizado com sucesso!', 'success');
+                    displayApiResponse(responseData);
+                    document.getElementById('registro-produtor').reset();
+                    showForm(loginForm); // Optionally redirect to login after successful registration
+                } else {
+                    const errorData = await response.json();
+                    console.error('Producer registration failed:', errorData);
+                    showMessage(`Erro no registro de produtor: ${errorData.message || response.statusText}`, 'error');
+                    displayApiResponse(errorData);
+                }
+            } catch (error) {
+                console.error('Error during producer registration:', error);
+                showMessage('Erro ao conectar com o servidor. Tente novamente.', 'error');
+                displayApiResponse({ error: error.message, status: 'Network Error' });
+            }
+        });
+
+        // Initially show the login form
+        document.addEventListener('DOMContentLoaded', () => {
+            showForm(loginForm);
+        });
+    </script>
+</body>
+</html>

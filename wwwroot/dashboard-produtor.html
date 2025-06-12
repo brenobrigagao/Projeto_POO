@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Produtor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Ajuste de altura mínima para a área de resposta da API em telas menores */
+        #apiResponseContent {
+            min-height: 150px; /* Altura mínima para mobile */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            #apiResponseContent {
+                min-height: 500px; /* Altura mínima para desktop */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-600 to-indigo-700 min-h-screen flex flex-col items-center p-6">
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-7xl space-y-8">
+        <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-8">Dashboard do Produtor</h1>
+
+        <!-- Área de Mensagens -->
+        <div id="message" class="hidden p-4 rounded-lg text-center font-medium"></div>
+
+        <!-- Seção de Configurações de Autenticação -->
+        <div class="bg-gray-100 p-6 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Configurações de Autenticação</h2>
+            <div class="space-y-4">
+                <div>
+                    <label for="jwtTokenInput" class="block text-gray-700 text-sm font-medium mb-1">Token JWT do Produtor:</label>
+                    <input type="text" id="jwtTokenInput" placeholder="Cole seu token JWT aqui" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                </div>
+                <button id="setJwtTokenBtn" class="w-full py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out font-bold text-lg">Definir Token JWT</button>
+                <p class="text-gray-600 text-sm">Token Atual: <span id="currentJwtToken" class="font-semibold text-gray-800">Nenhum definido</span></p>
+            </div>
+        </div>
+
+        <!-- Seção de Retorno da API -->
+        <div id="apiResponse" class="bg-gray-800 p-4 rounded-lg text-green-300 text-sm overflow-x-auto hidden">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-white font-semibold">Retorno da API:</h3>
+                <button id="clearApiResponseBtn" class="px-3 py-1 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition duration-300">Limpar</button>
+            </div>
+            <pre class="bg-gray-900 p-3 rounded-lg overflow-x-auto resize-y" style="max-height: 80vh;"><code id="apiResponseContent"></code></pre>
+        </div>
+
+        <!-- Seção: Flores Disponíveis -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Flores Disponíveis</h2>
+            <div id="availableFlowersList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- As flores disponíveis serão carregadas aqui pelo JS -->
+                <p class="text-gray-600 col-span-full">Carregando flores disponíveis...</p>
+            </div>
+        </div>
+
+        <!-- Seção: Cadastrar Novo Produto -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Cadastrar Novo Produto</h2>
+            <form id="registerProductForm" class="space-y-4">
+                <div>
+                    <label for="regFlorSelect" class="block text-gray-700 text-sm font-medium mb-1">Escolha a Flor:</label>
+                    <select id="regFlorSelect" name="florId" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                        <option value="">Carregando flores...</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="regPrice" class="block text-gray-700 text-sm font-medium mb-1">Preço:</label>
+                    <input type="number" step="0.01" id="regPrice" name="preco" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                </div>
+                <div>
+                    <label for="regStock" class="block text-gray-700 text-sm font-medium mb-1">Estoque:</label>
+                    <input type="number" id="regStock" name="estoque" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-purple-500 focus:border-purple-500 transition duration-200" required>
+                </div>
+                <button type="submit" class="w-full py-3 bg-purple-600 text-white rounded-lg shadow-md hover:bg-purple-700 transition duration-300 ease-in-out font-bold text-lg">Cadastrar Produto</button>
+            </form>
+        </div>
+
+        <!-- Seção: Meus Produtos -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Meus Produtos</h2>
+            <div id="myProductsList" class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg shadow">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Imagem</th>
+                            <th class="py-3 px-6 text-left">Nome da Flor</th>
+                            <th class="py-3 px-6 text-left">Preço</th>
+                            <th class="py-3 px-6 text-left">Estoque</th>
+                            <th class="py-3 px-6 text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700 text-sm font-light" id="myProductsTableBody">
+                        <!-- Meus produtos serão carregados aqui pelo JS -->
+                        <tr><td colspan="5" class="py-3 px-6 text-center">Carregando seus produtos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p id="noProductsMessage" class="hidden text-gray-600 mt-4 text-center">Nenhum produto cadastrado ainda.</p>
+        </div>
+
+        <!-- Modal de Edição de Produto -->
+        <div id="editProductModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden p-4 z-50">
+            <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md space-y-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Editar Produto</h2>
+                <form id="editProductForm" class="space-y-4">
+                    <input type="hidden" id="editProductId">
+                    <input type="hidden" id="editFlorIdHidden"> <!-- Campo oculto para florId -->
+
+                    <div>
+                        <label for="editPrice" class="block text-gray-700 text-sm font-medium mb-1">Preço:</label>
+                        <input type="number" step="0.01" id="editPrice" name="preco" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200" required>
+                    </div>
+                    <div>
+                        <label for="editStock" class="block text-gray-700 text-sm font-medium mb-1">Estoque:</label>
+                        <input type="number" id="editStock" name="estoque" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-200" required>
+                    </div>
+                    <!-- REMOVIDO: Campo de Nome da Imagem -->
+                    <div class="flex justify-end space-x-4">
+                        <button type="button" id="cancelEditBtn" class="px-5 py-2 bg-gray-300 text-gray-800 rounded-lg shadow-md hover:bg-gray-400 transition duration-300 ease-in-out font-semibold">Cancelar</button>
+                        <button type="submit" class="px-5 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out font-bold">Salvar Alterações</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmação de Exclusão -->
+        <div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden p-4 z-50">
+            <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-sm space-y-6 text-center">
+                <h2 class="text-xl font-bold text-gray-800">Confirmar Exclusão</h2>
+                <p class="text-gray-600">Tem certeza que deseja excluir este produto?</p>
+                <div class="flex justify-center space-x-4">
+                    <button type="button" id="cancelDeleteBtn" class="px-5 py-2 bg-gray-300 text-gray-800 rounded-lg shadow-md hover:bg-gray-400 transition duration-300 ease-in-out font-semibold">Cancelar</button>
+                    <button type="button" id="confirmDeleteBtn" class="px-5 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-300 ease-in-out font-bold">Excluir</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5211/api/Produtor';
+        // Variável global para o token JWT
+        let producerJwtToken = localStorage.getItem('producerJwtToken') || '';
+        // Mapa para armazenar a URL da imagem das flores, indexado por florId
+        const flowerImagesMap = {};
+        // Mapa para armazenar florId, indexado por nome da flor (minúsculo)
+        const flowerNameToIdMap = {};
+
+        // Obter elementos do DOM
+        const messageDiv = document.getElementById('message');
+        const apiResponseDiv = document.getElementById('apiResponse');
+        const apiResponseContent = document.getElementById('apiResponseContent');
+        const clearApiResponseBtn = document.getElementById('clearApiResponseBtn');
+        const availableFlowersList = document.getElementById('availableFlowersList');
+        const registerProductForm = document.getElementById('registerProductForm');
+        const regFlorSelect = document.getElementById('regFlorSelect'); // Novo select para nome da flor
+        const myProductsTableBody = document.getElementById('myProductsTableBody');
+        const noProductsMessage = document.getElementById('noProductsMessage');
+
+        const jwtTokenInput = document.getElementById('jwtTokenInput');
+        const setJwtTokenBtn = document.getElementById('setJwtTokenBtn');
+        const currentJwtTokenSpan = document.getElementById('currentJwtToken');
+
+        const editProductModal = document.getElementById('editProductModal');
+        const editProductForm = document.getElementById('editProductForm');
+        const editProductId = document.getElementById('editProductId');
+        const editFlorIdHidden = document.getElementById('editFlorIdHidden'); // Campo oculto para florId no modal de edição
+        const editPrice = document.getElementById('editPrice');
+        const editStock = document.getElementById('editStock');
+        // REMOVIDO: const editImageName = document.getElementById('editImageName');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+        const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        let productIdToDelete = null; // Variável para armazenar o ID do produto a ser excluído
+
+        // --- Funções Auxiliares ---
+
+        // Função para exibir mensagens ao usuário
+        function showMessage(msg, type = 'success') {
+            messageDiv.textContent = msg;
+            messageDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            if (type === 'success') {
+                messageDiv.classList.add('bg-green-100', 'text-green-700');
+            } else {
+                messageDiv.classList.add('bg-red-100', 'text-red-700');
+            }
+            messageDiv.classList.remove('hidden');
+            setTimeout(() => {
+                messageDiv.classList.add('hidden');
+            }, 5000); // Esconde após 5 segundos
+        }
+
+        // Função para exibir a resposta da API
+        async function displayApiResponse(responseObject) {
+            apiResponseDiv.classList.remove('hidden');
+            let content;
+            try {
+                // Tenta formatar como JSON se for um objeto ou puder ser parseado como um
+                if (typeof responseObject === 'object' && responseObject !== null) {
+                    content = JSON.stringify(responseObject, null, 2);
+                } else {
+                    // Se for uma string, tenta parsear como JSON, senão exibe como texto puro
+                    content = JSON.stringify(JSON.parse(responseObject), null, 2);
+                }
+            } catch (e) {
+                // Se o parsing falhar, exibe o conteúdo como texto puro
+                content = String(responseObject);
+            }
+            apiResponseContent.textContent = content;
+        }
+
+
+        // Event listener para limpar a área de resposta da API
+        clearApiResponseBtn.addEventListener('click', () => {
+            apiResponseContent.textContent = '';
+            apiResponseDiv.classList.add('hidden');
+        });
+
+        // Função para obter cabeçalhos comuns para requisições da API (incluindo autenticação)
+        function getAuthHeaders() {
+            const headers = {
+                'Content-Type': 'application/json',
+            };
+            if (producerJwtToken) {
+                headers['Authorization'] = `Bearer ${producerJwtToken}`;
+            }
+            return headers;
+        }
+
+        // Função para atualizar a exibição do token JWT
+        function updateTokenDisplay() {
+            if (producerJwtToken) {
+                // Exibe apenas os primeiros 10 caracteres e os últimos 10 para segurança
+                const displayedToken = producerJwtToken.length > 20
+                    ? producerJwtToken.substring(0, 10) + '...' + producerJwtToken.substring(producerJwtToken.length - 10)
+                    : producerJwtToken;
+                currentJwtTokenSpan.textContent = displayedToken;
+            } else {
+                currentJwtTokenSpan.textContent = 'Nenhum definido';
+            }
+        }
+
+        // Event listener para definir o token JWT
+        setJwtTokenBtn.addEventListener('click', () => {
+            const newToken = jwtTokenInput.value.trim();
+            if (newToken) {
+                producerJwtToken = newToken;
+                localStorage.setItem('producerJwtToken', newToken);
+                showMessage('Token JWT definido e salvo com sucesso!', 'success');
+                jwtTokenInput.value = ''; // Limpa o campo de entrada
+                updateTokenDisplay(); // Atualiza a exibição do token
+                // Recarrega os dados para usar o novo token, se necessário
+                fetchAvailableFlowers();
+                fetchMyProducts();
+            } else {
+                showMessage('Por favor, insira um token JWT válido.', 'error');
+            }
+        });
+
+        // Nova função para buscar e processar o corpo da resposta de forma segura
+        async function getSafeResponseBody(response) {
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                try {
+                    return await response.json();
+                } catch (e) {
+                    // Se a API diz que é JSON mas o parsing falha, tente como texto
+                    return await response.text();
+                }
+            } else {
+                // Se não é JSON, ou não há Content-Type, sempre tente como texto
+                return await response.text();
+            }
+        }
+
+        // --- Chamadas à API ---
+
+        // Buscar e exibir as flores disponíveis
+        async function fetchAvailableFlowers() {
+            availableFlowersList.innerHTML = '<p class="text-gray-600 col-span-full">Carregando flores disponíveis...</p>';
+            regFlorSelect.innerHTML = '<option value="">Carregando flores...</option>'; // Limpa e adiciona opção de carregamento
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/listar-flores`, {
+                    method: 'GET',
+                    headers: getAuthHeaders()
+                });
+
+                const responseBody = await getSafeResponseBody(response); // Usa a nova função
+
+                if (response.ok) {
+                    await displayApiResponse(responseBody);
+                    if (Array.isArray(responseBody) && responseBody.length > 0) {
+                        availableFlowersList.innerHTML = ''; // Limpar mensagem de carregamento
+                        regFlorSelect.innerHTML = '<option value="">-- Selecione uma Flor --</option>'; // Opção padrão
+
+                        // Popula os mapas de imagens e nomes para IDs
+                        responseBody.forEach(flower => {
+                            flowerImagesMap[flower.id] = flower.imageUrl;
+                            flowerNameToIdMap[flower.nome.toLowerCase()] = flower.id; // Armazena nome em minúsculas
+
+                            // Adiciona opção ao select de cadastro
+                            const option = document.createElement('option');
+                            option.value = flower.id;
+                            option.textContent = `${flower.nome} (ID: ${flower.id})`;
+                            regFlorSelect.appendChild(option);
+                        });
+
+                        // Renderiza os cards de flores disponíveis
+                        responseBody.forEach(flower => {
+                            // Usa a URL da imagem da API se disponível, senão usa um placeholder
+                            const imageUrl = flower.imageUrl || `https://placehold.co/150x150/E5E7EB/4B5563?text=Flor+ID+${flower.id}`;
+                            const flowerCard = `
+                                <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                                    <img src="${imageUrl}" alt="Flor ID ${flower.id}" class="w-32 h-32 mx-auto mb-3 rounded-md object-cover" onerror="this.onerror=null;this.src='https://placehold.co/150x150/E5E7EB/4B5563?text=Erro+Imagem';">
+                                    <p class="text-lg font-semibold text-gray-800">ID: ${flower.id}</p>
+                                    <p class="text-gray-600">Nome: ${flower.nome || 'N/A'}</p>
+                                </div>
+                            `;
+                            availableFlowersList.innerHTML += flowerCard;
+                        });
+                    } else {
+                        availableFlowersList.innerHTML = '<p class="text-gray-600 col-span-full">Nenhuma flor disponível no momento.</p>';
+                        regFlorSelect.innerHTML = '<option value="">Nenhuma flor disponível</option>';
+                    }
+                } else {
+                    showMessage(`Erro ao carregar flores disponíveis: ${response.status} ${response.statusText}`, 'error');
+                    await displayApiResponse({
+                        status: response.status,
+                        statusText: response.statusText,
+                        responseBody: responseBody // Passa o corpo já processado
+                    });
+                    availableFlowersList.innerHTML = '<p class="text-red-500 col-span-full">Erro ao carregar flores disponíveis.</p>';
+                    regFlorSelect.innerHTML = '<option value="">Erro ao carregar flores</option>';
+                }
+            } catch (error) {
+                console.error('Erro ao buscar flores disponíveis:', error);
+                showMessage('Erro de conexão ao carregar flores disponíveis.', 'error');
+                await displayApiResponse({ error: error.message, endpoint: '/listar-flores' });
+                availableFlowersList.innerHTML = '<p class="text-red-500 col-span-full">Erro de conexão ao carregar flores disponíveis.</p>';
+                regFlorSelect.innerHTML = '<option value="">Erro de conexão</option>';
+            }
+        }
+
+        // Buscar e exibir os produtos do produtor
+        async function fetchMyProducts() {
+            myProductsTableBody.innerHTML = '<tr><td colspan="5" class="py-3 px-6 text-center">Carregando seus produtos...</td></tr>'; // Alterado colspan para 5
+            noProductsMessage.classList.add('hidden');
+            try {
+                const response = await fetch(`${API_BASE_URL}/meus-produtos`, {
+                    method: 'GET',
+                    headers: getAuthHeaders()
+                });
+
+                const responseBody = await getSafeResponseBody(response); // Usa a nova função
+
+                if (response.ok) {
+                    await displayApiResponse(responseBody);
+                    if (Array.isArray(responseBody) && responseBody.length > 0) {
+                        myProductsTableBody.innerHTML = ''; // Limpar mensagem de carregamento
+                        responseBody.forEach(product => {
+                            // Agora usamos product.imageUrl diretamente para a imagem
+                            const finalImageUrl = product.imageUrl || `https://placehold.co/50x50/E5E7EB/4B5563?text=ID+${product.id}`;
+
+                            const row = `
+                                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                    <td class="py-3 px-6 text-left">
+                                        <img src="${finalImageUrl}" alt="Produto ID ${product.id}" class="w-12 h-12 rounded-md object-cover" onerror="this.onerror=null;this.src='https://placehold.co/50x50/E5E7EB/4B5563?text=Erro';">
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">${product.flor || 'N/A'}</td> <!-- Alterado de product.nomeFlor para product.flor -->
+                                    <td class="py-3 px-6 text-left">R$ ${product.preco ? product.preco.toFixed(2) : 'N/A'}</td>
+                                    <td class="py-3 px-6 text-left">${product.estoque || 'N/A'}</td>
+                                    <td class="py-3 px-6 text-center">
+                                        <button onclick="openEditModal(${product.id}, ${product.florId}, ${product.preco}, ${product.estoque})" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded-md text-xs mr-2">Editar</button>
+                                        <button onclick="confirmDeleteProduct(${product.id})" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-md text-xs">Excluir</button>
+                                    </td>
+                                </tr>
+                            `;
+                            myProductsTableBody.innerHTML += row;
+                        });
+                    } else {
+                        myProductsTableBody.innerHTML = '';
+                        noProductsMessage.classList.remove('hidden');
+                    }
+                } else {
+                    showMessage(`Erro ao carregar seus produtos: ${response.status} ${response.statusText}`, 'error');
+                    await displayApiResponse({
+                        status: response.status,
+                        statusText: response.statusText,
+                        responseBody: responseBody // Passa o corpo já processado
+                    });
+                    myProductsTableBody.innerHTML = '<tr><td colspan="5" class="py-3 px-6 text-center text-red-500">Erro ao carregar seus produtos.</td></tr>'; // Alterado colspan para 5
+                }
+            } catch (error) {
+                console.error('Erro ao buscar meus produtos:', error);
+                showMessage('Erro de conexão ao carregar seus produtos.', 'error');
+                await displayApiResponse({ error: error.message, endpoint: '/meus-produtos' });
+                myProductsTableBody.innerHTML = '<tr><td colspan="5" class="py-3 px-6 text-center text-red-500">Erro de conexão ao carregar seus produtos.</td></tr>'; // Alterado colspan para 5
+            }
+        }
+
+        // Lidar com o envio do formulário de Cadastro de Produto
+        registerProductForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const florId = regFlorSelect.value; // Pega o ID da flor diretamente do select
+
+            if (!florId) {
+                showMessage(`Por favor, selecione uma flor na lista.`, 'error');
+                return;
+            }
+
+            const preco = document.getElementById('regPrice').value;
+            const estoque = document.getElementById('regStock').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/cadastrar-produto`, {
+                    method: 'POST',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify({ florId: parseInt(florId), preco: parseFloat(preco), estoque: parseInt(estoque) })
+                });
+
+                const responseBody = await getSafeResponseBody(response); // Usa a nova função
+
+                if (response.ok) {
+                    showMessage('Produto cadastrado com sucesso!', 'success');
+                    await displayApiResponse(responseBody);
+                    registerProductForm.reset();
+                    fetchMyProducts(); // Atualizar a lista de meus produtos
+                } else {
+                    showMessage(`Erro ao cadastrar produto: ${response.status} ${response.statusText}`, 'error');
+                    await displayApiResponse({
+                        status: response.status,
+                        statusText: response.statusText,
+                        responseBody: responseBody // Passa o corpo já processado
+                    });
+                }
+            } catch (error) {
+                console.error('Erro durante o cadastro do produto:', error);
+                showMessage('Erro de conexão ao cadastrar produto.', 'error');
+                await displayApiResponse({ error: error.message, endpoint: '/cadastrar-produto' });
+            }
+        });
+
+        // Abrir Modal de Edição de Produto
+        window.openEditModal = (id, florId, preco, estoque) => { // Removido 'imageName'
+            editProductId.value = id;
+            editFlorIdHidden.value = florId; // Define o valor do campo oculto
+            editPrice.value = preco;
+            editStock.value = estoque;
+            // REMOVIDO: editImageName.value = imageName;
+            editProductModal.classList.remove('hidden');
+        };
+
+        // Fechar Modal de Edição de Produto
+        cancelEditBtn.addEventListener('click', () => {
+            editProductModal.classList.add('hidden');
+            editProductForm.reset();
+        });
+
+        // Lidar com o envio do formulário de Edição de Produto
+        editProductForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const productId = editProductId.value;
+            const florId = editFlorIdHidden.value; // Pega o florId do campo oculto
+            const preco = editPrice.value;
+            const estoque = editStock.value;
+            // REMOVIDO: const imageName = editImageName.value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/editar-produto/${productId}`, {
+                    method: 'PUT',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify({
+                        florId: parseInt(florId),
+                        preco: parseFloat(preco),
+                        estoque: parseInt(estoque)
+                        // REMOVIDO: imageName: imageName
+                    })
+                });
+
+                const responseBody = await getSafeResponseBody(response); // Usa a nova função
+
+                if (response.ok) {
+                    showMessage('Produto atualizado com sucesso!', 'success');
+                    await displayApiResponse(responseBody);
+                    editProductModal.classList.add('hidden');
+                    fetchMyProducts(); // Atualizar a lista de meus produtos para refletir a nova imagem
+                } else {
+                    showMessage(`Erro ao atualizar produto: ${response.status} ${response.statusText}`, 'error');
+                    await displayApiResponse({
+                        status: response.status,
+                        statusText: response.statusText,
+                        responseBody: responseBody // Passa o corpo já processado
+                    });
+                }
+            } catch (error) {
+                console.error('Erro durante a atualização do produto:', error);
+                showMessage('Erro de conexão ao atualizar produto.', 'error');
+                await displayApiResponse({ error: error.message, endpoint: `/editar-produto/${productId}` });
+            }
+        });
+
+        // Abrir Modal de Confirmação de Exclusão
+        window.confirmDeleteProduct = (id) => {
+            productIdToDelete = id;
+            deleteConfirmModal.classList.remove('hidden');
+        };
+
+        // Fechar Modal de Confirmação de Exclusão
+        cancelDeleteBtn.addEventListener('click', () => {
+            deleteConfirmModal.classList.add('hidden');
+            productIdToDelete = null;
+        });
+
+        // Lidar com a Exclusão de Produto
+        confirmDeleteBtn.addEventListener('click', async () => {
+            if (!productIdToDelete) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/excluir-produto/${productIdToDelete}`, {
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
+                });
+
+                const responseBody = await getSafeResponseBody(response); // Usa a nova função
+
+                if (response.ok) {
+                    showMessage('Produto excluído com sucesso!', 'success');
+                    await displayApiResponse(responseBody);
+                    deleteConfirmModal.classList.add('hidden');
+                    fetchMyProducts(); // Atualizar a lista de meus produtos
+                } else {
+                    showMessage(`Erro ao excluir produto: ${response.status} ${response.statusText}`, 'error');
+                    await displayApiResponse({
+                        status: response.status,
+                        statusText: response.statusText,
+                        responseBody: responseBody // Passa o corpo já processado
+                    });
+                }
+            } catch (error) {
+                console.error('Erro durante a exclusão do produto:', error);
+                showMessage('Erro de conexão ao excluir produto.', 'error');
+                await displayApiResponse({ error: error.message, endpoint: `/excluir-produto/${productIdToDelete}` });
+            } finally {
+                productIdToDelete = null; // Limpa o ID do produto a ser excluído
+            }
+        });
+
+        // Inicialização: Carregar dados quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            updateTokenDisplay(); // Exibe o token atual ao carregar
+            fetchAvailableFlowers(); // Busca as flores disponíveis
+            fetchMyProducts();       // Busca os produtos do produtor
+        });
+    </script>
+</body>
+</html>
