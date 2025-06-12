@@ -10,7 +10,6 @@ namespace FFCE.Data
         {
         }
 
-        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produtor> Produtores { get; set; }
         public DbSet<Flor> Flores { get; set; }
@@ -22,55 +21,57 @@ namespace FFCE.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Cliente>()
-                .HasOne(c => c.Usuario)
-                .WithMany()
-                .HasForeignKey(c => c.UsuarioId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Produtor>()
-                .HasOne(p => p.Usuario)
-                .WithMany()
-                .HasForeignKey(p => p.UsuarioId)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            // Cliente ↔︎ Carrinho (1:1)
             modelBuilder.Entity<Cliente>()
                 .HasOne(c => c.Carrinho)
                 .WithOne(carr => carr.Cliente)
                 .HasForeignKey<Carrinho>(carr => carr.ClienteId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Carrinho ↔︎ ItemCarrinho (1:N)
             modelBuilder.Entity<Carrinho>()
                 .HasMany(c => c.Itens)
                 .WithOne(i => i.Carrinho)
                 .HasForeignKey(i => i.CarrinhoId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Produto ↔︎ Flor (N:1) — corrigido para 1:N em Flor
             modelBuilder.Entity<Produto>()
                 .HasOne(p => p.Flor)
-                .WithOne()
-                .HasForeignKey<Produto>(p => p.FlorId)
+                .WithMany(f => f.Produtos)           // agora 1 flor → N produtos
+                .HasForeignKey(p => p.FlorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Produto ↔︎ Produtor (N:1)
             modelBuilder.Entity<Produto>()
                 .HasOne(p => p.Produtor)
                 .WithMany(prod => prod.Produtos)
                 .HasForeignKey(p => p.ProdutorId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // ItemCarrinho ↔︎ Produto (N:1)
             modelBuilder.Entity<ItemCarrinho>()
                 .HasOne(i => i.Produto)
                 .WithMany()
                 .HasForeignKey(i => i.ProdutoId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Configuração adicional para Flor
             modelBuilder.Entity<Flor>(entity =>
             {
+                entity.HasKey(f => f.Id);
                 entity.Property(f => f.ImageName)
                       .IsRequired()
                       .HasMaxLength(200);
+
+                // Fluent API para a coleção de produtos
+                entity.HasMany(f => f.Produtos)
+                      .WithOne(p => p.Flor)
+                      .HasForeignKey(p => p.FlorId)
+                      .OnDelete(DeleteBehavior.Restrict);
             });
 
+            // Dados iniciais de Flores
             modelBuilder.Entity<Flor>().HasData(
                 new Flor
                 {
@@ -107,9 +108,7 @@ namespace FFCE.Data
                     Descricao = "Girassol vibrante, traz alegria aos ambientes",
                     ImageName = "girassol.jpg"
                 }
-            );  
-
-        } 
-
-    } 
+            );
+        }
+    }
 }

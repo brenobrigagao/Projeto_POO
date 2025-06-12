@@ -1,40 +1,48 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using FFCE.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace FFCE.Services;
-
-public class TokenService
+namespace FFCE.Services
 {
-    private readonly IConfiguration _configuration;
-    public TokenService(IConfiguration configuration)
+    public class TokenService
     {
-        _configuration = configuration;
-    }
+        private readonly IConfiguration _configuration;
 
-    public string GenerateToken(Usuario usuario)
-    {
-        var claims = new[]
+        public TokenService(IConfiguration configuration)
         {
-            new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
-            new Claim(ClaimTypes.Name, usuario.Email),
-            new Claim(ClaimTypes.Role, usuario.Role)
-        };
+            _configuration = configuration;
+        }
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        /// <summary>
+        /// Gera um JWT com os claims de Id, Email e Role.
+        /// </summary>
+        /// <param name="id">Identificador numérico do usuário (Cliente ou Produtor).</param>
+        /// <param name="email">E-mail do usuário.</param>
+        /// <param name="role">Role do usuário (ex: "Cliente" ou "Produtor").</param>
+        /// <returns>String contendo o token JWT.</returns>
+        public string GenerateToken(int id, string email, string role)
+        {
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, id.ToString()),
+                new Claim(ClaimTypes.Name, email),
+                new Claim(ClaimTypes.Role, role)
+            };
 
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.UtcNow.AddHours(4),
-            signingCredentials: creds
-        );
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = new JwtSecurityToken(
+                issuer:   _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims:   claims,
+                expires:  DateTime.UtcNow.AddHours(4),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
 }

@@ -3,7 +3,9 @@ using FFCE.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -21,9 +23,32 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FFCE API", Version = "v1" });
+
+    var securityScheme = new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Insira o token JWT no formato: Bearer {seu token}",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+        }
+    };
+
+    c.AddSecurityDefinition("Bearer", securityScheme);
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { securityScheme, new string[] { } }
+    });
+});
 
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!);
 builder.Services.AddAuthentication(options =>
@@ -45,15 +70,17 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.EnsureDeleted();   
+    db.Database.EnsureDeleted();
     db.Database.Migrate();
 }
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -65,6 +92,7 @@ else
     app.UseExceptionHandler("/error");
     app.UseHsts();
 }
+
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
