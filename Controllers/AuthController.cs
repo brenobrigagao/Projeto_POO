@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using BCrypt.Net;
 using FFCE.Data;
 using FFCE.DTOs;
 using FFCE.Models;
@@ -23,117 +22,94 @@ namespace FFCE.Controllers
             _tokenService = tokenService;
         }
 
-        [HttpPost("registrar")]
-        public async Task<IActionResult> Registro([FromBody] RegistroDTO dto)
+        [HttpPost("registro-cliente")]
+        public async Task<IActionResult> RegistroCliente([FromBody] ClienteCreateDTO dto)
         {
-            var exists = await _context.Usuarios.AnyAsync(u => u.Email == dto.Email);
-            if (exists)
+            if (await _context.Clientes.AnyAsync(c => c.Email == dto.Email))
                 return BadRequest("Email já cadastrado.");
 
-            var usuario = new Usuario
+            var cliente = new Cliente
             {
-                Email     = dto.Email,
+                Email = dto.Email,
                 SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha),
-                Role      = dto.Role
+                Nome = dto.Nome,
+                Telefone = dto.Telefone,
+                Endereco = dto.Endereco,
+                Gostos = dto.Gostos,
+                Carrinho = new Carrinho()
             };
 
-            _context.Usuarios.Add(usuario);
+            _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "O usuário foi registrado com sucesso!" });
+            return Ok(new { message = "Cliente registrado com sucesso!", id = cliente.Id });
+        }
+
+        [HttpPost("registro-produtor")]
+        public async Task<IActionResult> RegistroProdutor([FromBody] ProdutorCreateDTO dto)
+        {
+            if (await _context.Produtores.AnyAsync(p => p.Email == dto.Email))
+                return BadRequest("Email já cadastrado.");
+
+            var produtor = new Produtor
+            {
+                Email = dto.Email,
+                SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha),
+                Nome = dto.Nome,
+                Telefone = dto.Telefone,
+                Endereco = dto.Endereco,
+                NomeLoja = dto.NomeLoja,
+                Descricao = dto.Descricao
+            };
+
+            _context.Produtores.Add(produtor);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Produtor registrado com sucesso!", id = produtor.Id });
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDTO dto)
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Email == dto.Email);
+            // Tenta autenticar como Cliente
+            var cliente = await _context.Clientes
+                .FirstOrDefaultAsync(c => c.Email == dto.Email);
 
-            if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, usuario.SenhaHash))
-                return Unauthorized("Credenciais inválidas!");
-
-            var token = _tokenService.GenerateToken(usuario);
-
-            return Ok(new
+            if (cliente != null && BCrypt.Net.BCrypt.Verify(dto.Senha, cliente.SenhaHash))
             {
-                token,
-                role = usuario.Role,
-                id   = usuario.Id
-            });
+                var token = _tokenService.GenerateToken(
+                    cliente.Id, cliente.Email, "Cliente");
+                return Ok(new { token, role = "Cliente", id = cliente.Id });
+            }
+
+            // Tenta autenticar como Produtor
+            var produtor = await _context.Produtores
+                .FirstOrDefaultAsync(p => p.Email == dto.Email);
+
+            if (produtor != null && BCrypt.Net.BCrypt.Verify(dto.Senha, produtor.SenhaHash))
+            {
+                var token = _tokenService.GenerateToken(
+                    produtor.Id, produtor.Email, "Produtor");
+                return Ok(new { token, role = "Produtor", id = produtor.Id });
+            }
+
+            return Unauthorized("Credenciais inválidas!");
         }
 
-        
-        [Authorize]
-        [HttpPost("cadastro")]
-        public async Task<IActionResult> Cadastro([FromBody] CadastroDTO dto)
-        {
-            var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-
-            var usuario = await _context.Usuarios.FindAsync(usuarioId);
-            if (usuario == null)
-                return NotFound("Usuário não encontrado!");
-
-            if (usuario.Role == "Produtor")
-            {
-                var produtor = new Produtor
-                {
-                    Nome       = dto.Nome,
-                    Telefone   = dto.Telefone,
-                    Endereco   = dto.Endereco,
-                    NomeLoja   = dto.NomeLoja!,
-                    Descricao  = dto.Descricao!,
-                    UsuarioId  = usuarioId
-                };
-                _context.Produtores.Add(produtor);
-            }
-            else if (usuario.Role == "Cliente")
-            {
-                var cliente = new Cliente
-                {
-                    Nome       = dto.Nome,
-                    Telefone   = dto.Telefone,
-                    Endereco   = dto.Endereco,
-                    Gostos     = dto.Gostos!,
-                    UsuarioId  = usuarioId,
-                    Carrinho   = new Carrinho()  
-                };
-                _context.Clientes.Add(cliente);
-            }
-            else
-            {
-                return BadRequest("Role inválida para cadastro complementar.");
-            }
-
-            await _context.SaveChangesAsync();
-            return Ok("Cadastro completo com sucesso!");
-        }
-
-        
         [Authorize]
         [HttpGet("verificar")]
         public async Task<IActionResult> VerificarCadastro()
         {
-            var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+            var role = User.FindFirst(ClaimTypes.Role)!.Value;
 
-            var usuario = await _context.Usuarios.FindAsync(usuarioId);
-            if (usuario == null)
-                return NotFound("Usuário não encontrado!");
+            bool cadastroCompleto = role switch
+            {
+                "Cliente" => await _context.Clientes.AnyAsync(c => c.Id == userId),
+                "Produtor" => await _context.Produtores.AnyAsync(p => p.Id == userId),
+                _ => throw new InvalidOperationException("Role desconhecida.")
+            };
 
-            bool cadastroCompleto;
-            if (usuario.Role == "Produtor")
-            {
-                cadastroCompleto = await _context.Produtores
-                    .AnyAsync(p => p.UsuarioId == usuarioId);
-            }
-            else if (usuario.Role == "Cliente")
-            {
-                cadastroCompleto = await _context.Clientes
-                    .AnyAsync(c => c.UsuarioId == usuarioId);
-            }
-            else
-            {
-                return BadRequest("Role desconhecida.");
-            }
             return Ok(new { cadastroCompleto });
         }
     }

@@ -2,14 +2,34 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace FFCE.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Clientes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    SenhaHash = table.Column<string>(type: "TEXT", nullable: false),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Telefone = table.Column<string>(type: "TEXT", nullable: false),
+                    Endereco = table.Column<string>(type: "TEXT", nullable: false),
+                    Gostos = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Flores",
                 columns: table => new
@@ -26,50 +46,13 @@ namespace FFCE.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Produtores",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     SenhaHash = table.Column<string>(type: "TEXT", nullable: false),
-                    Role = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuarios", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clientes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Nome = table.Column<string>(type: "TEXT", nullable: false),
-                    Telefone = table.Column<string>(type: "TEXT", nullable: false),
-                    Endereco = table.Column<string>(type: "TEXT", nullable: false),
-                    Gostos = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clientes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Clientes_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Produtores",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
                     Nome = table.Column<string>(type: "TEXT", nullable: false),
                     Telefone = table.Column<string>(type: "TEXT", nullable: false),
                     Endereco = table.Column<string>(type: "TEXT", nullable: false),
@@ -79,12 +62,6 @@ namespace FFCE.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Produtores_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,16 +140,23 @@ namespace FFCE.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Flores",
+                columns: new[] { "Id", "Descricao", "ImageName", "Nome" },
+                values: new object[,]
+                {
+                    { 1, "Cacto decorativo em vaso de cerâmica", "cactoempote.jpg", "Cacto em Pote" },
+                    { 2, "Flor de pétalas brancas, ideal para arranjos clean", "florbranca.jpg", "Flor Branca" },
+                    { 3, "Clássica rosa vermelha, símbolo de paixão", "rosavermelha.jpg", "Rosa Vermelha" },
+                    { 4, "Cacto pequeno, resistente e de fácil manutenção", "cacto.jpg", "Cacto Simples" },
+                    { 5, "Girassol vibrante, traz alegria aos ambientes", "girassol.jpg", "Girassol" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Carrinhos_ClienteId",
                 table: "Carrinhos",
                 column: "ClienteId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Clientes_UsuarioId",
-                table: "Clientes",
-                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItensCarrinho_CarrinhoId",
@@ -183,11 +167,6 @@ namespace FFCE.Migrations
                 name: "IX_ItensCarrinho_ProdutoId",
                 table: "ItensCarrinho",
                 column: "ProdutoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Produtores_UsuarioId",
-                table: "Produtores",
-                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_FlorId",
@@ -221,9 +200,6 @@ namespace FFCE.Migrations
 
             migrationBuilder.DropTable(
                 name: "Produtores");
-
-            migrationBuilder.DropTable(
-                name: "Usuarios");
         }
     }
 }

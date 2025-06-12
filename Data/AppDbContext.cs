@@ -10,7 +10,6 @@ namespace FFCE.Data
         {
         }
 
-        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produtor> Produtores { get; set; }
         public DbSet<Flor> Flores { get; set; }
@@ -21,18 +20,6 @@ namespace FFCE.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Cliente>()
-                .HasOne(c => c.Usuario)
-                .WithMany()
-                .HasForeignKey(c => c.UsuarioId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Produtor>()
-                .HasOne(p => p.Usuario)
-                .WithMany()
-                .HasForeignKey(p => p.UsuarioId)
-                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Cliente>()
                 .HasOne(c => c.Carrinho)
@@ -107,9 +94,9 @@ namespace FFCE.Data
                     Descricao = "Girassol vibrante, traz alegria aos ambientes",
                     ImageName = "girassol.jpg"
                 }
-            );  
+            );
 
-        } 
+        }
 
-    } 
+    }
 }

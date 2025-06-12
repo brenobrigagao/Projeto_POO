@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FFCE.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250515115625_SeedDeFlores")]
-    partial class SeedDeFlores
+    [Migration("20250612110919_InitialCreation")]
+    partial class InitialCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,10 @@ namespace FFCE.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Endereco")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -54,16 +58,15 @@ namespace FFCE.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("SenhaHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Clientes");
                 });
@@ -96,21 +99,21 @@ namespace FFCE.Migrations
                         {
                             Id = 1,
                             Descricao = "Cacto decorativo em vaso de cerâmica",
-                            ImageName = "cacto em pote.jpg",
+                            ImageName = "cactoempote.jpg",
                             Nome = "Cacto em Pote"
                         },
                         new
                         {
                             Id = 2,
                             Descricao = "Flor de pétalas brancas, ideal para arranjos clean",
-                            ImageName = "flor branca.jpg",
+                            ImageName = "florbranca.jpg",
                             Nome = "Flor Branca"
                         },
                         new
                         {
                             Id = 3,
                             Descricao = "Clássica rosa vermelha, símbolo de paixão",
-                            ImageName = "rosa-vermelha.jpg",
+                            ImageName = "rosavermelha.jpg",
                             Nome = "Rosa Vermelha"
                         },
                         new
@@ -198,6 +201,10 @@ namespace FFCE.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Endereco")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -210,41 +217,17 @@ namespace FFCE.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Produtores");
-                });
-
-            modelBuilder.Entity("FFCE.Models.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("SenhaHash")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Produtores");
                 });
 
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
@@ -256,17 +239,6 @@ namespace FFCE.Migrations
                         .IsRequired();
 
                     b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("FFCE.Models.Cliente", b =>
-                {
-                    b.HasOne("FFCE.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("FFCE.Models.ItemCarrinho", b =>
@@ -305,17 +277,6 @@ namespace FFCE.Migrations
                     b.Navigation("Flor");
 
                     b.Navigation("Produtor");
-                });
-
-            modelBuilder.Entity("FFCE.Models.Produtor", b =>
-                {
-                    b.HasOne("FFCE.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("FFCE.Models.Carrinho", b =>
