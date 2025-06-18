@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ECWIqGpP9gNzUm43XqTqCesvMAAS3gxgLVRHA1s/Yec=",
+  "Hash": "BROIyUifZV754MOm9TSZIlQqvaw6vV6cVkxq/gZShJs=",
   "Source": "FFCE",
   "BasePath": "_content/FFCE",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-itdmmrgbw3.gz",
       "SourceId": "FFCE",
       "SourceType": "Discovered",
       "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/FFCE",
-      "RelativePath": "exemplo_cadastro#[.{fingerprint=7kpkp53beb}]?.html.gz",
+      "RelativePath": "exemplo_cadastro#[.{fingerprint=itdmmrgbw3}]?.html.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -31,8 +31,8 @@
       "RelatedAsset": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "hhhcrathd4",
-      "Integrity": "e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=",
+      "Fingerprint": "b5eai8vb6y",
+      "Integrity": "H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7kpkp53beb",
-      "Integrity": "mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=",
+      "Fingerprint": "itdmmrgbw3",
+      "Integrity": "ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/exemplo_cadastro.html"
@@ -166,13 +166,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "exemplo_cadastro.7kpkp53beb.html",
-      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Route": "exemplo_cadastro.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-itdmmrgbw3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000461893764"
+          "Quality": "0.000459136823"
         }
       ],
       "ResponseHeaders": [
@@ -182,19 +182,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2164"
+          "Value": "2177"
         },
         {
           "Name": "ETag",
-          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
+          "Value": "\"H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+          "Value": "Wed, 18 Jun 2025 12:01:44 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -210,26 +210,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
+          "Value": "W/\"ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "7kpkp53beb"
-        },
-        {
-          "Name": "label",
-          "Value": "exemplo_cadastro.html"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
+          "Value": "sha256-ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M="
         }
       ]
     },
     {
-      "Route": "exemplo_cadastro.7kpkp53beb.html",
+      "Route": "exemplo_cadastro.html",
       "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -239,7 +231,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6725"
+          "Value": "6714"
         },
         {
           "Name": "Content-Type",
@@ -247,11 +239,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
+          "Value": "\"ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+          "Value": "Wed, 18 Jun 2025 12:01:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.html.gz",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-itdmmrgbw3.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2177"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 12:01:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.itdmmrgbw3.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-itdmmrgbw3.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000459136823"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2177"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 12:01:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "itdmmrgbw3"
+        },
+        {
+          "Name": "label",
+          "Value": "exemplo_cadastro.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.itdmmrgbw3.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6714"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 12:01:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -261,7 +398,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7kpkp53beb"
+          "Value": "itdmmrgbw3"
         },
         {
           "Name": "label",
@@ -269,13 +406,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
+          "Value": "sha256-ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M="
         }
       ]
     },
     {
-      "Route": "exemplo_cadastro.7kpkp53beb.html.gz",
-      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Route": "exemplo_cadastro.itdmmrgbw3.html.gz",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-itdmmrgbw3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -284,7 +421,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2164"
+          "Value": "2177"
         },
         {
           "Name": "Content-Type",
@@ -292,11 +429,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
+          "Value": "\"H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+          "Value": "Wed, 18 Jun 2025 12:01:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -314,7 +451,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7kpkp53beb"
+          "Value": "itdmmrgbw3"
         },
         {
           "Name": "label",
@@ -322,144 +459,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4="
-        }
-      ]
-    },
-    {
-      "Route": "exemplo_cadastro.html",
-      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000461893764"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2164"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
-        }
-      ]
-    },
-    {
-      "Route": "exemplo_cadastro.html",
-      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6725"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
-        }
-      ]
-    },
-    {
-      "Route": "exemplo_cadastro.html.gz",
-      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2164"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4="
+          "Value": "sha256-H4hXQ3deaSRB+tF1gzt2YOtsxB7gcNcCPvA+lZoVQL8="
         }
       ]
     },

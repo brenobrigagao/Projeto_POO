@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>7kpkp53beb</Fingerprint>
-      <Integrity>mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=</Integrity>
+      <Fingerprint>itdmmrgbw3</Fingerprint>
+      <Integrity>ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\exemplo_cadastro.html'))</OriginalItemSpec>

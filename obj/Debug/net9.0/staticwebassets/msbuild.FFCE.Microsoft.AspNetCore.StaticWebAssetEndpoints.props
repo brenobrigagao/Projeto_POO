@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/FFCE/exemplo_cadastro.7kpkp53beb.html">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\exemplo_cadastro.html'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"7kpkp53beb"},{"Name":"integrity","Value":"sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW\u002Bky3eArjCp4="},{"Name":"label","Value":"_content/FFCE/exemplo_cadastro.html"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6725"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW\u002Bky3eArjCp4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 18 Jun 2025 11:49:39 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FFCE/exemplo_cadastro.html">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\exemplo_cadastro.html'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW\u002Bky3eArjCp4="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6725"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW\u002Bky3eArjCp4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 18 Jun 2025 11:49:39 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6714"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=\u0022"},{"Name":"Last-Modified","Value":"Wed, 18 Jun 2025 12:01:44 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FFCE/exemplo_cadastro.itdmmrgbw3.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\exemplo_cadastro.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"itdmmrgbw3"},{"Name":"integrity","Value":"sha256-ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M="},{"Name":"label","Value":"_content/FFCE/exemplo_cadastro.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6714"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022ii4zs2fgoR/T9syoZTKlowIg2GZPIFFjMoKlcISBg4M=\u0022"},{"Name":"Last-Modified","Value":"Wed, 18 Jun 2025 12:01:44 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/FFCE/images/cacto.h87lknrjdj.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\cacto.jpg'))</AssetFile>
