@@ -58,6 +58,8 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    options.RequireHttpsMetadata = false;
+    
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -66,7 +68,23 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(key)
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        NameClaimType = "nameid", 
+        RoleClaimType = "role"    
+    };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine($"Falha na autenticação: {context.Exception.Message}");
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine("Token validado com sucesso!");
+            return Task.CompletedTask;
+        }
     };
 });
 
@@ -75,6 +93,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
+// Reset do banco 
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -93,10 +112,14 @@ else
     app.UseHsts();
 }
 
+app.UseDefaultFiles(); 
 app.UseStaticFiles();
 app.UseHttpsRedirection();
-app.UseCors("CorsPolicy");
-app.UseAuthentication();
-app.UseAuthorization();
+
+app.UseCors("CorsPolicy"); 
+app.UseAuthentication();   
+app.UseAuthorization();    
+
 app.MapControllers();
+
 app.Run();

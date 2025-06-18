@@ -1,1 +1,877 @@
-{"Version":1,"Hash":"1sFu7l/wXGoMy+RPh4B40Ww79yvSYfsgx9I7SDVTbvI=","Source":"FFCE","BasePath":"_content/FFCE","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[{"Name":"FFCE/wwwroot","Source":"FFCE","ContentRoot":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/","BasePath":"_content/FFCE","Pattern":"**"}],"Assets":[{"Identity":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net9.0/compressed/3y4ie336r3-bnkz2g7fsb.gz","SourceId":"FFCE","SourceType":"Discovered","ContentRoot":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net9.0/compressed/","BasePath":"_content/FFCE","RelativePath":"scripts/login#[.{fingerprint=bnkz2g7fsb}]?.js.gz","AssetKind":"All","AssetMode":"All","AssetRole":"Alternative","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js","AssetTraitName":"Content-Encoding","AssetTraitValue":"gzip","Fingerprint":"6qxfrdccpx","Integrity":"fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js"},{"Identity":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js","SourceId":"FFCE","SourceType":"Discovered","ContentRoot":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/","BasePath":"_content/FFCE","RelativePath":"scripts/login#[.{fingerprint}]?.js","AssetKind":"All","AssetMode":"All","AssetRole":"Primary","AssetMergeBehavior":"","AssetMergeSource":"","RelatedAsset":"","AssetTraitName":"","AssetTraitValue":"","Fingerprint":"bnkz2g7fsb","Integrity":"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=","CopyToOutputDirectory":"Never","CopyToPublishDirectory":"PreserveNewest","OriginalItemSpec":"wwwroot/scripts/login.js"}],"Endpoints":[{"Route":"scripts/login.bnkz2g7fsb.js","AssetFile":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net9.0/compressed/3y4ie336r3-bnkz2g7fsb.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001795332136"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"556"},{"Name":"ETag","Value":"\"fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA=\""},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 12:40:21 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"W/\"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=\""}],"EndpointProperties":[{"Name":"fingerprint","Value":"bnkz2g7fsb"},{"Name":"label","Value":"scripts/login.js"},{"Name":"integrity","Value":"sha256-RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw="}]},{"Route":"scripts/login.bnkz2g7fsb.js","AssetFile":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1355"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=\""},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 11:57:37 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"}],"EndpointProperties":[{"Name":"fingerprint","Value":"bnkz2g7fsb"},{"Name":"label","Value":"scripts/login.js"},{"Name":"integrity","Value":"sha256-RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw="}]},{"Route":"scripts/login.bnkz2g7fsb.js.gz","AssetFile":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net9.0/compressed/3y4ie336r3-bnkz2g7fsb.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"556"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA=\""},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 12:40:21 GMT"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"fingerprint","Value":"bnkz2g7fsb"},{"Name":"label","Value":"scripts/login.js.gz"},{"Name":"integrity","Value":"sha256-fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA="}]},{"Route":"scripts/login.js","AssetFile":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net9.0/compressed/3y4ie336r3-bnkz2g7fsb.gz","Selectors":[{"Name":"Content-Encoding","Value":"gzip","Quality":"0.001795332136"}],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"556"},{"Name":"ETag","Value":"\"fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA=\""},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 12:40:21 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"W/\"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=\""}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw="}]},{"Route":"scripts/login.js","AssetFile":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/wwwroot/scripts/login.js","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"1355"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw=\""},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 11:57:37 GMT"},{"Name":"Cache-Control","Value":"no-cache"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-RwVeTZx71Sg/7DYOVbiwcmScnPBOYytBNIDI4GyQONw="}]},{"Route":"scripts/login.js.gz","AssetFile":"/home/matheuscastelo/Área de Trabalho/projeto-poo-breno/Projeto_POO/obj/Debug/net9.0/compressed/3y4ie336r3-bnkz2g7fsb.gz","Selectors":[],"ResponseHeaders":[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Content-Length","Value":"556"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\"fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA=\""},{"Name":"Last-Modified","Value":"Fri, 09 May 2025 12:40:21 GMT"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Encoding","Value":"gzip"},{"Name":"Vary","Value":"Content-Encoding"}],"EndpointProperties":[{"Name":"integrity","Value":"sha256-fmcW0XHfA+pKlJfUSaJAQhaJZHsqPKtbsQUaeyJZlOA="}]}]}
+{
+  "Version": 1,
+  "Hash": "ECWIqGpP9gNzUm43XqTqCesvMAAS3gxgLVRHA1s/Yec=",
+  "Source": "FFCE",
+  "BasePath": "_content/FFCE",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FFCE/wwwroot",
+      "Source": "FFCE",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "exemplo_cadastro#[.{fingerprint=7kpkp53beb}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "hhhcrathd4",
+      "Integrity": "e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html"
+    },
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "exemplo_cadastro#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7kpkp53beb",
+      "Integrity": "mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/exemplo_cadastro.html"
+    },
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cacto.jpg",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "images/cacto#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "h87lknrjdj",
+      "Integrity": "4dfCQIW60hxtrAdBazepixeW1KtQmNBNnWMtTR4Pp7U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/cacto.jpg"
+    },
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cactoempote.jpg",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "images/cactoempote#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "uffpdzcvnw",
+      "Integrity": "lswWy1GzXQaJXveQpO4onPkZ279UzxfvwPGwj3bXnCo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/cactoempote.jpg"
+    },
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/florbranca.jpg",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "images/florbranca#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dcfl1vi410",
+      "Integrity": "EyK0AUEsxFeaC90wmPK84fgSCL3SrEpsiWn2xaAdoAM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/florbranca.jpg"
+    },
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/girassol.jpg",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "images/girassol#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6h7sn4pkh7",
+      "Integrity": "JlThp50+1vnmdeL6DuOfabFWRpYn8hc5g5tFm+YVCcc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/girassol.jpg"
+    },
+    {
+      "Identity": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/rosavermelha.jpg",
+      "SourceId": "FFCE",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/",
+      "BasePath": "_content/FFCE",
+      "RelativePath": "images/rosavermelha#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2recqhih4k",
+      "Integrity": "rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/rosavermelha.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "exemplo_cadastro.7kpkp53beb.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000461893764"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2164"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7kpkp53beb"
+        },
+        {
+          "Name": "label",
+          "Value": "exemplo_cadastro.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.7kpkp53beb.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6725"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7kpkp53beb"
+        },
+        {
+          "Name": "label",
+          "Value": "exemplo_cadastro.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.7kpkp53beb.html.gz",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2164"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7kpkp53beb"
+        },
+        {
+          "Name": "label",
+          "Value": "exemplo_cadastro.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000461893764"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2164"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.html",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6725"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mWSngWZEuUXg7F0sC/ATKlq/HySjV3fW+ky3eArjCp4="
+        }
+      ]
+    },
+    {
+      "Route": "exemplo_cadastro.html.gz",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/Debug/net9.0/compressed/6owbm5pwf2-7kpkp53beb.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2164"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:49:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-e6mkYtYyAE7t4OEZ6g6m1UIwwBChGTn8XhPX482iul4="
+        }
+      ]
+    },
+    {
+      "Route": "images/cacto.h87lknrjdj.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cacto.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3691158"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4dfCQIW60hxtrAdBazepixeW1KtQmNBNnWMtTR4Pp7U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h87lknrjdj"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cacto.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4dfCQIW60hxtrAdBazepixeW1KtQmNBNnWMtTR4Pp7U="
+        }
+      ]
+    },
+    {
+      "Route": "images/cacto.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cacto.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3691158"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4dfCQIW60hxtrAdBazepixeW1KtQmNBNnWMtTR4Pp7U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4dfCQIW60hxtrAdBazepixeW1KtQmNBNnWMtTR4Pp7U="
+        }
+      ]
+    },
+    {
+      "Route": "images/cactoempote.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cactoempote.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "297732"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lswWy1GzXQaJXveQpO4onPkZ279UzxfvwPGwj3bXnCo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lswWy1GzXQaJXveQpO4onPkZ279UzxfvwPGwj3bXnCo="
+        }
+      ]
+    },
+    {
+      "Route": "images/cactoempote.uffpdzcvnw.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cactoempote.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "297732"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lswWy1GzXQaJXveQpO4onPkZ279UzxfvwPGwj3bXnCo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uffpdzcvnw"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cactoempote.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lswWy1GzXQaJXveQpO4onPkZ279UzxfvwPGwj3bXnCo="
+        }
+      ]
+    },
+    {
+      "Route": "images/florbranca.dcfl1vi410.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/florbranca.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "923446"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EyK0AUEsxFeaC90wmPK84fgSCL3SrEpsiWn2xaAdoAM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dcfl1vi410"
+        },
+        {
+          "Name": "label",
+          "Value": "images/florbranca.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EyK0AUEsxFeaC90wmPK84fgSCL3SrEpsiWn2xaAdoAM="
+        }
+      ]
+    },
+    {
+      "Route": "images/florbranca.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/florbranca.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "923446"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EyK0AUEsxFeaC90wmPK84fgSCL3SrEpsiWn2xaAdoAM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EyK0AUEsxFeaC90wmPK84fgSCL3SrEpsiWn2xaAdoAM="
+        }
+      ]
+    },
+    {
+      "Route": "images/girassol.6h7sn4pkh7.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/girassol.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "831356"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JlThp50+1vnmdeL6DuOfabFWRpYn8hc5g5tFm+YVCcc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6h7sn4pkh7"
+        },
+        {
+          "Name": "label",
+          "Value": "images/girassol.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JlThp50+1vnmdeL6DuOfabFWRpYn8hc5g5tFm+YVCcc="
+        }
+      ]
+    },
+    {
+      "Route": "images/girassol.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/girassol.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "831356"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JlThp50+1vnmdeL6DuOfabFWRpYn8hc5g5tFm+YVCcc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JlThp50+1vnmdeL6DuOfabFWRpYn8hc5g5tFm+YVCcc="
+        }
+      ]
+    },
+    {
+      "Route": "images/rosavermelha.2recqhih4k.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/rosavermelha.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3408211"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2recqhih4k"
+        },
+        {
+          "Name": "label",
+          "Value": "images/rosavermelha.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok="
+        }
+      ]
+    },
+    {
+      "Route": "images/rosavermelha.jpg",
+      "AssetFile": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/rosavermelha.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3408211"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 18 Jun 2025 11:30:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rnPdEWW8WawCjWvcJVmn2KBii3IJga1A8EE3jI8n4Ok="
+        }
+      ]
+    }
+  ]
+}

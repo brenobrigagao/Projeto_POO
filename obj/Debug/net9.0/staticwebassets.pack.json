@@ -1,27 +1,47 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\Projeto_POO\\wwwroot\\scripts\\login.js",
-      "PackagePath": "staticwebassets\\scripts\\login.js"
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/exemplo_cadastro.html",
+      "PackagePath": "staticwebassets/exemplo_cadastro.html"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cacto.jpg",
+      "PackagePath": "staticwebassets/images/cacto.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/cactoempote.jpg",
+      "PackagePath": "staticwebassets/images/cactoempote.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/florbranca.jpg",
+      "PackagePath": "staticwebassets/images/florbranca.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/girassol.jpg",
+      "PackagePath": "staticwebassets/images/girassol.jpg"
+    },
+    {
+      "Id": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/wwwroot/images/rosavermelha.jpg",
+      "PackagePath": "staticwebassets/images/rosavermelha.jpg"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.FFCE.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.FFCE.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.FFCE.props",
       "PackagePath": "build\\FFCE.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.FFCE.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.FFCE.props",
       "PackagePath": "buildMultiTargeting\\FFCE.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.FFCE.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.FFCE.props",
       "PackagePath": "buildTransitive\\FFCE.props"
     }
   ],
