@@ -13,7 +13,7 @@ function atualizarTotalGeral(total) {
 // Altera a quantidade de um item
 async function alterarQtd(idProduto, delta) {
   try {
-    const response = await fetch('/api/Cliente/carrinho/alterar', {
+    const response = await fetch('/api/Cliente/adicionar-carrinho', {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ async function alterarQtd(idProduto, delta) {
 // Remove um item (sem recarregar a página)
 async function removerItem(idProduto) {
   try {
-    const response = await fetch(`/api/Cliente/carrinho/${idProduto}`, {
+    const response = await fetch(`/api/Cliente/adicionar-carrinho`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', carregarCarrinho);
 // Parte que vai mostrar oq q tá dando erro nessa b
 async function carregarCarrinho() {
   const token = localStorage.getItem('token');
-  // Redireciona pra página de login se não estiver logado (aka, lê oq tá escrito)
+  // Redireciona pra página de login se não estiver logado
   if (!token) {
     alert("Faça login para acessar seu carrinho");
     window.location.href = "login_usuario.html";
