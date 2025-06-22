@@ -5034,19 +5034,19 @@
     ]
   },
   "packageFolders": {
-    "/home/breno/.nuget/packages/": {}
+    "C:\\Users\\gabriel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/breno/Área de Trabalho/Projeto_POO/FFCE.csproj",
+      "projectUniqueName": "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\FFCE.csproj",
       "projectName": "FFCE",
-      "projectPath": "/home/breno/Área de Trabalho/Projeto_POO/FFCE.csproj",
-      "packagesPath": "/home/breno/.nuget/packages/",
-      "outputPath": "/home/breno/Área de Trabalho/Projeto_POO/obj/",
+      "projectPath": "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\FFCE.csproj",
+      "packagesPath": "C:\\Users\\gabriel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/breno/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5069,7 +5069,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -5139,7 +5140,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
