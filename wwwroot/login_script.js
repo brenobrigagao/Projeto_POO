@@ -1,72 +1,69 @@
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const tipoSelect = document.getElementById("signup-user-type");
-      const camposProdutor = document.getElementById("campos-produtor");
-      const camposCliente = document.getElementById("campos-cliente");
-
-      tipoSelect.addEventListener("change", function () {
-        if (this.value === "produtor") {
-          camposProdutor.style.display = "block";
-          camposCliente.style.display = "none";
-        } else if (this.value === "cliente") {
-          camposProdutor.style.display = "none";
-          camposCliente.style.display = "block";
-        } else {
-          camposProdutor.style.display = "none";
-          camposCliente.style.display = "none";
-        }
-      });
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  // Configura alternância de formulários
+  const tipoSelect = document.getElementById("signup-user-type");
+  const camposProdutor = document.getElementById("campos-produtor");
+  const camposCliente = document.getElementById("campos-cliente");
   
+  const toggleCampos = () => {
+    camposProdutor.style.display = tipoSelect.value === "produtor" ? "block" : "none";
+    camposCliente.style.display = tipoSelect.value === "cliente" ? "block" : "none";
+  };
+  
+  tipoSelect.addEventListener("change", toggleCampos);
+  toggleCampos(); // Inicializa estado
+});
 
-
+// Login
 document.querySelector('.sign-in-htm').addEventListener('submit', async (e) => {
   e.preventDefault();
+  
   const email = document.getElementById('login-username').value;
   const senha = document.getElementById('login-password').value;
+  
+  if (!email || !senha) {
+    alert('Preencha todos os campos');
+    return;
+  }
 
-  const response = await fetch('/api/Auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email: email, senha: senha })
-  });
+  try {
+    const response = await fetch('/api/Auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, senha })
+    });
 
-  if (response.ok) {
-    const data = await response.json();
-    alert('Login realizado com sucesso!');
-    localStorage.setItem('token', data.token);
-    window.location.href = 'home.html';
-  } else {
-    alert('Erro ao fazer login');
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+      window.location.href = 'home.html';
+    } else {
+      const error = await response.json();
+      alert(`Erro: ${error.message || 'Falha no login'}`);
+    }
+  } catch (erro) {
+    alert('Erro de conexão');
   }
 });
 
+// Cadastro
 document.getElementById('cadastro-form').addEventListener('submit', async (e) => {
   e.preventDefault();
+  
   const tipo = document.getElementById('signup-user-type').value;
+  let dados, url;
 
   if (tipo === 'cliente') {
-    const cliente = {
+    dados = {
       email: document.getElementById('signup-email-cliente').value,
       telefone: document.getElementById('signup-telefone-cliente').value,
       endereco: document.getElementById('signup-endereco-cliente').value,
       senha: document.getElementById('signup-password-cliente').value,
       gostos: document.getElementById('signup-gostos').value
     };
-
-    const response = await fetch('/api/Auth/register-cliente', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(cliente)
-    });
-
-    if (response.ok) alert('Cadastro realizado!');
-    else alert('Erro ao cadastrar cliente');
-
+    url = '/api/Auth/register-cliente';
+  
   } else if (tipo === 'produtor') {
-    const produtor = {
+    dados = {
       nomeLoja: document.getElementById('signup-nome-loja').value,
       nome: document.getElementById('signup-nome-produtor').value,
       enderecoLoja: document.getElementById('signup-endereco-loja').value,
@@ -75,14 +72,46 @@ document.getElementById('cadastro-form').addEventListener('submit', async (e) =>
       email: document.getElementById('signup-email-produtor').value,
       descricao: document.getElementById('signup-descricao').value
     };
+    url = '/api/Auth/register-produtor';
+  
+  } else {
+    alert('Selecione um tipo de usuário');
+    return;
+  }
 
-    const response = await fetch('/api/Auth/register-produtor', {
+  // Validação básica
+  if (!dados.email || !dados.senha) {
+    alert('Email e senha são obrigatórios');
+    return;
+  }
+
+  try {
+    const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(produtor)
+      body: JSON.stringify(dados)
     });
 
-    if (response.ok) alert('Cadastro realizado!');
-    else alert('Erro ao cadastrar produtor');
+    if (response.ok) {
+      alert('Cadastro realizado com sucesso!');
+      e.target.reset(); // Limpa o formulário
+    } else {
+      const error = await response.json();
+      alert(`Erro: ${error.message || 'Falha no cadastro'}`);
+    }
+  } catch (erro) {
+    alert('Erro de conexão com o servidor');
   }
+
+  // Validar formato de email
+function validarEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+if (!validarEmail(cliente.email)) {
+  alert('Email inválido');
+  return;
+}
+
 });
