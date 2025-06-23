@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/FFCE.csproj": {}
+    "/home/matheuscastelo/Área de Trabalho/PROJETO POO GABRIEL/Projeto_POO/FFCE.csproj": {}
   },
   "projects": {
-    "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/FFCE.csproj": {
+    "/home/matheuscastelo/Área de Trabalho/PROJETO POO GABRIEL/Projeto_POO/FFCE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/FFCE.csproj",
+        "projectUniqueName": "/home/matheuscastelo/Área de Trabalho/PROJETO POO GABRIEL/Projeto_POO/FFCE.csproj",
         "projectName": "FFCE",
-        "projectPath": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/FFCE.csproj",
+        "projectPath": "/home/matheuscastelo/Área de Trabalho/PROJETO POO GABRIEL/Projeto_POO/FFCE.csproj",
         "packagesPath": "/home/matheuscastelo/.nuget/packages/",
-        "outputPath": "/home/matheuscastelo/Área de Trabalho/projeto-poo-merge/Projeto_POO/obj/",
+        "outputPath": "/home/matheuscastelo/Área de Trabalho/PROJETO POO GABRIEL/Projeto_POO/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/matheuscastelo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -41,8 +41,8 @@
         "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -100,20 +100,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
