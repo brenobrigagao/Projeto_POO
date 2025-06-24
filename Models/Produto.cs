@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace FFCE.Models
 {
     public class Produto

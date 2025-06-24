@@ -1,3 +1,9 @@
+// Função para validar email
+function validarEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
 // Função de verificação de login
 function usuarioEstaLogado() {
   const token = localStorage.getItem('token');
@@ -13,135 +19,143 @@ function usuarioEstaLogado() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-   // Redireciona se já estiver logado
+  // Redireciona se já estiver logado
   if (usuarioEstaLogado()) {
     window.location.href = 'home.html';
     return;
   }
-  // Configura alternância de formulários
-  const tipoSelect = document.getElementById("signup-user-type");
+
+  // Elementos do cadastro
+  const tipoSelect    = document.getElementById("signup-user-type");
   const camposProdutor = document.getElementById("campos-produtor");
-  const camposCliente = document.getElementById("campos-cliente");
-  
-  const toggleCampos = () => {
-    camposProdutor.style.display = tipoSelect.value === "produtor" ? "block" : "none";
-    camposCliente.style.display = tipoSelect.value === "cliente" ? "block" : "none";
-  };
-  
+  const camposCliente  = document.getElementById("campos-cliente");
+
+  // Marca todos os inputs/selects de uma seção como disabled ou enabled
+  function setDisabledEm(secao, disabled) {
+    secao.querySelectorAll('input, select, textarea').forEach(c => {
+      c.disabled = disabled;
+    });
+  }
+
+  // Função que mostra/oculta e habilita/desabilita campos
+  function toggleCampos() {
+    const isProdutor = tipoSelect.value === "produtor";
+    const isCliente  = tipoSelect.value === "cliente";
+
+    // Exibição
+    camposProdutor.style.display = isProdutor ? "block" : "none";
+    camposCliente.style.display  = isCliente  ? "block" : "none";
+
+    // Habilita apenas a seção visível
+    setDisabledEm(camposProdutor, !isProdutor);
+    setDisabledEm(camposCliente,  !isCliente);
+  }
+
+  // Inicializa e escuta mudança
   tipoSelect.addEventListener("change", toggleCampos);
-  toggleCampos(); // Inicializa estado
+  toggleCampos();
 });
 
-// Login
-document.querySelector('.sign-in-htm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const email = document.getElementById('login-username').value;
-  const senha = document.getElementById('login-password').value;
-  
-  if (!email || !senha) {
-    alert('Preencha todos os campos');
-    return;
-  }
+// ----- LOGIN -----
+// ----- LOGIN -----
+document.querySelector('.sign-in-htm')
+  .addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch('/api/Auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, senha })
-    });
+    const email = document.getElementById('login-username').value.trim();
+    const senha = document.getElementById('login-password').value.trim();
 
-    if (response.ok) {
-      const data = await response.json();
-      localStorage.setItem('token', data.token);
-      window.location.href = 'home.html';
-    } else {
-      const error = await response.json();
-      alert(`Erro: ${error.message || 'Falha no login'}`);
-    }
-  } catch (erro) {
-    alert('Erro de conexão');
-  }
-});
-
-
-// Cadastro
-document.getElementById('cadastro-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const tipo = document.getElementById('signup-user-type').value;
-  let dados, url;
-
-  if (tipo === 'cliente' && !validarEmail(dados.email)) {
-    alert('Email inválido');
+    if (!email || !senha) {
+      alert('Preencha todos os campos');
       return;
-}
-
-  if (tipo === 'produtor' && !validarEmail(dados.email)) {
-    alert('Email inválido');
-      return;
-}
-
-  if (tipo === 'cliente') {
-    dados = {
-      email: document.getElementById('signup-email-cliente').value,
-      telefone: document.getElementById('signup-telefone-cliente').value,
-      endereco: document.getElementById('signup-endereco-cliente').value,
-      senha: document.getElementById('signup-password-cliente').value,
-      gostos: document.getElementById('signup-gostos').value
-    };
-    url = '/api/Auth/registro-cliente';
-  
-  } else if (tipo === 'produtor') {
-    dados = {
-      nomeLoja: document.getElementById('signup-nome-loja').value,
-      nome: document.getElementById('signup-nome-produtor').value,
-      enderecoLoja: document.getElementById('signup-endereco-loja').value,
-      telefone: document.getElementById('signup-telefone-produtor').value,
-      senha: document.getElementById('signup-password-produtor').value,
-      email: document.getElementById('signup-email-produtor').value,
-      descricao: document.getElementById('signup-descricao').value
-    };
-    url = '/api/Auth/registro-produtor';
-  
-  } else {
-    alert('Selecione um tipo de usuário');
-    return;
-  }
-
-  // Validação básica
-  if (!dados.email || !dados.senha) {
-    alert('Email e senha são obrigatórios');
-    return;
-  }
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados)
-    });
-
-    if (response.ok) {
-      alert('Cadastro realizado com sucesso!');
-      e.target.reset(); // Limpa o formulário
-    } else {
-      const error = await response.json();
-      alert(`Erro: ${error.message || 'Falha no cadastro'}`);
     }
-  } catch (erro) {
-    alert('Erro de conexão com o servidor');
-  }
+    if (!validarEmail(email)) {
+      alert('Email inválido');
+      return;
+    }
 
-    // Validar formato de email
-function validarEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
+    try {
+      const response = await fetch('http://localhost:5211/api/Auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha })
+      });
 
-if (!validarEmail(cliente.email)) {
-  alert('Email inválido');
-  return;
-}
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem('token', token);
+        window.location.href = 'home.html';
+      } else {
+        const err = await response.json();
+        alert(`Erro: ${err.message || 'Falha no login'}`);
+      }
+    } catch {
+      alert('Erro de conexão');
+    }
+  });
 
-});
+// ----- CADASTRO -----
+document.getElementById('cadastro-form')
+  .addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const tipo = document.getElementById('signup-user-type').value;
+    let dados = {}, url;
+
+    if (tipo === 'cliente') {
+      dados = {
+        nome:     document.getElementById('signup-nome-cliente').value.trim(),
+        telefone: document.getElementById('signup-telefone-cliente').value.trim(),
+        endereco: document.getElementById('signup-endereco-cliente').value.trim(),
+        gostos:   document.getElementById('signup-gostos').value.trim(),
+        email:    document.getElementById('signup-email-cliente').value.trim(),
+        senha:    document.getElementById('signup-password-cliente').value.trim()
+      };
+      url = 'http://localhost:5211/api/Auth/registro-cliente';
+
+    } else if (tipo === 'produtor') {
+      dados = {
+        nome:      document.getElementById('signup-nome-produtor').value.trim(),
+        telefone:  document.getElementById('signup-telefone-produtor').value.trim(),
+        endereco:  document.getElementById('signup-endereco-loja').value.trim(),
+        nomeLoja:  document.getElementById('signup-nome-loja').value.trim(),
+        descricao: document.getElementById('signup-descricao').value.trim(),
+        email:     document.getElementById('signup-email-produtor').value.trim(),
+        senha:     document.getElementById('signup-password-produtor').value.trim()
+      };
+      url = 'http://localhost:5211/api/Auth/registro-produtor';
+
+    } else {
+      alert('Selecione um tipo de usuário');
+      return;
+    }
+
+    // Validações básicas
+    if (!dados.email || !dados.senha) {
+      alert('Email e senha são obrigatórios');
+      return;
+    }
+    if (!validarEmail(dados.email)) {
+      alert('Email inválido');
+      return;
+    }
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+
+      if (response.ok) {
+        alert('Cadastro realizado com sucesso!');
+        e.target.reset();
+        document.getElementById('tab-1').click(); // volta para login
+      } else {
+        const err = await response.json();
+        alert(`Erro: ${err.message || 'Falha no cadastro'}`);
+      }
+    } catch {
+      alert('Erro de conexão com o servidor');
+    }
+  });

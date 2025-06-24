@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\FFCE.csproj": {}
+    "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\FFCE.csproj": {
+    "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\FFCE.csproj",
+        "projectUniqueName": "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj",
         "projectName": "FFCE",
-        "projectPath": "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\FFCE.csproj",
+        "projectPath": "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj",
         "packagesPath": "C:\\Users\\gabriel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabriel\\Documents\\GitHub\\Projeto_POO\\obj\\",
+        "outputPath": "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -41,8 +41,8 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
