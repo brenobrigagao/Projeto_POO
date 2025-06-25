@@ -1,14 +1,18 @@
-function menuShow(){
-  let menuMobile = document.querySelector('.mobile-menu');
-  if(menuMobile.classList.contains('open')){
-    menuMobile.classList.remove('open');
-    document.querySelector('.icon').src = "https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg";
-  } else {
-    menuMobile.classList.add('open');
-    document.querySelector('.icon').src = "https://img.icons8.com/?size=100&id=83149&format=png&color=000000";
-    const icon = document.querySelector('.icon');
-icon.src = 'https://img.icons8.com/?size=100&id=83149&format=png&color=000000';
-icon.style.width = '24px';
-icon.style.height = '24px';
-  }
-}
+
+    // Mostrar botão de logout se usuário estiver logado
+    document.addEventListener('DOMContentLoaded', function() {
+      const token = localStorage.getItem('token');
+      const logoutBtn = document.getElementById('logout-btn');
+      
+      if (token) {
+        logoutBtn.style.display = 'block';
+        logoutBtn.addEventListener('click', function() {
+          localStorage.removeItem('token');
+          alert('Você foi desconectado!');
+          window.location.href = 'login_usuario.html';
+        });
+      } else {
+        logoutBtn.style.display = 'none';
+      }
+    });
+ 
