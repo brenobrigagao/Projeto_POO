@@ -27,3 +27,13 @@
     font-size: 14px;
   }
 }
+
+/* Esconde elementos de produtor por padrão */
+.produtor-only {
+  display: none;
+}
+
+/* Mostra apenas quando o body tem data-role="produtor" */
+body[data-role="produtor"] .produtor-only {
+  display: block; /* ou inline-block/flex conforme necessário */
+}

@@ -158,4 +158,12 @@ document.getElementById('cadastro-form')
     } catch {
       alert('Erro de conexão com o servidor');
     }
+
+// Esconde o botão dá página de produtor se não estiver logado como tal
+if (usuarioEstaLogado() && usuarioEhProdutor()) {
+    addProductBtn.classList.remove('hidden-element');
+} else {
+    addProductBtn.classList.add('hidden-element');
+}
+
   });
