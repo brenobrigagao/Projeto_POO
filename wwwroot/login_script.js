@@ -78,7 +78,9 @@ document.querySelector('.sign-in-htm')
       const response = await fetch('http://localhost:5211/api/Auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, senha })
+        body: JSON.stringify({ 
+          Email: email, 
+          Senha: senha })
       });
 
       if (response.ok) {

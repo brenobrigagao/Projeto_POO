@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
         
         try {
             const payload = JSON.parse(atob(token.split('.')[1]));
-            return payload.role === 'produtor';
+            const roleKey = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+            const role = payload[roleKey] || '';
+            return role.toLowerCase() === 'produtor';
         } catch (e) {
             console.error("Erro ao verificar perfil:", e);
             return false;

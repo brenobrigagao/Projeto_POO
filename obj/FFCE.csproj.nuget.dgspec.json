@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj": {}
+    "D:\\POO\\Projeto_POO-main\\FFCE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj": {
+    "D:\\POO\\Projeto_POO-main\\FFCE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj",
+        "projectUniqueName": "D:\\POO\\Projeto_POO-main\\FFCE.csproj",
         "projectName": "FFCE",
-        "projectPath": "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\FFCE.csproj",
+        "projectPath": "D:\\POO\\Projeto_POO-main\\FFCE.csproj",
         "packagesPath": "C:\\Users\\gabriel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabriel\\Downloads\\Projeto_POO-main\\obj\\",
+        "outputPath": "D:\\POO\\Projeto_POO-main\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config"

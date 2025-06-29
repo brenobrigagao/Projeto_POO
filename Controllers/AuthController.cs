@@ -25,8 +25,11 @@ namespace FFCE.Controllers
         [HttpPost("registro-cliente")]
         public async Task<IActionResult> RegistroCliente([FromBody] ClienteCreateDTO dto)
         {
-            if (await _context.Clientes.AnyAsync(c => c.Email == dto.Email))
-                return BadRequest("Email já cadastrado.");
+            if (await _context.Clientes.AnyAsync(c => c.Email == dto.Email) ||
+                await _context.Produtores.AnyAsync(p => p.Email == dto.Email))
+            {
+                return BadRequest( new { message = "Este email já está cadastrado como cliente ou produtor." });
+            }
 
             var cliente = new Cliente
             {
@@ -48,8 +51,11 @@ namespace FFCE.Controllers
         [HttpPost("registro-produtor")]
         public async Task<IActionResult> RegistroProdutor([FromBody] ProdutorCreateDTO dto)
         {
-            if (await _context.Produtores.AnyAsync(p => p.Email == dto.Email))
-                return BadRequest("Email já cadastrado.");
+            if (await _context.Produtores.AnyAsync(p => p.Email == dto.Email) ||
+                await _context.Clientes.AnyAsync(c => c.Email == dto.Email))
+            {
+                return BadRequest( new { message = "Este email já está cadastrado como produtor ou cliente." });
+            }
 
             var produtor = new Produtor
             {
@@ -71,9 +77,17 @@ namespace FFCE.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            // Tenta autenticar como Cliente
-            var cliente = await _context.Clientes
+
+            var clienteTask = _context.Clientes
                 .FirstOrDefaultAsync(c => c.Email == dto.Email);
+
+            var produtorTask = _context.Produtores
+                .FirstOrDefaultAsync(p => p.Email == dto.Email);
+
+            await Task.WhenAll(clienteTask, produtorTask);
+
+            var cliente = clienteTask.Result;
+            var produtor = produtorTask.Result;
 
             if (cliente != null && BCrypt.Net.BCrypt.Verify(dto.Senha, cliente.SenhaHash))
             {
@@ -81,10 +95,6 @@ namespace FFCE.Controllers
                     cliente.Id, cliente.Email, "Cliente");
                 return Ok(new { token, role = "Cliente", id = cliente.Id });
             }
-
-            // Tenta autenticar como Produtor
-            var produtor = await _context.Produtores
-                .FirstOrDefaultAsync(p => p.Email == dto.Email);
 
             if (produtor != null && BCrypt.Net.BCrypt.Verify(dto.Senha, produtor.SenhaHash))
             {

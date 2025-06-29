@@ -28,12 +28,16 @@
   }
 }
 
-/* Esconde elementos de produtor por padrão */
 .produtor-only {
-  display: none;
+  display: none; /* Esconde por padrão */
 }
 
-/* Mostra apenas quando o body tem data-role="produtor" */
+/* Mostra apenas quando logado como produtor */
 body[data-role="produtor"] .produtor-only {
-  display: block; /* ou inline-block/flex conforme necessário */
+  display: block;
+}
+
+/* Esconde completamente quando deslogado */
+body:not([data-role]) .produtor-only {
+  display: none !important;
 }

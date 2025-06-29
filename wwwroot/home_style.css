@@ -399,8 +399,3 @@
 #cart-count {
   display: none;
 }
-
-/* Esconde elementos de produtor por padrão */
-.produtor-only {
-  display: none;
-}
