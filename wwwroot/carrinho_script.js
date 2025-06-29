@@ -146,11 +146,4 @@ async function carregarCarrinho() {
     alert(`Falha ao carregar carrinho: ${error.message}`);
   }
 
-  // Esconde o botão dá página de produtor se não estiver logado como tal
-if (usuarioEstaLogado() && usuarioEhProdutor()) {
-    addProductBtn.classList.remove('hidden-element');
-} else {
-    addProductBtn.classList.add('hidden-element');
-}
-
 }

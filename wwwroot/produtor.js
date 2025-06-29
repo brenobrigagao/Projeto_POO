@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Variáveis de estado
     let currentProducts = [];
     let editingProductId = null;
+    let currentImageName = null;
     
     // Event Listeners
     addProductBtn.addEventListener('click', openAddProductModal);
@@ -82,12 +83,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // Adaptar os dados recebidos para o formato esperado
             currentProducts = currentProducts.map(p => ({
                 id: p.id,
-                name: p.flor, 
-                category: 'outros', // Categoria pode ser ajustada conforme necessidade
-                price: p.preco,
-                description: '', 
-                imageUrl: p.imageUrl,
-                active: true 
+                florId: p.florId,       // Adicionado
+                name: p.flor,           // Usar 'flor' como nome
+                price: p.preco,         // Manter 'preco'
+                estoque: p.estoque,     // Adicionar estoque
+                imageName: p.imageName, // Usar nome da imagem
+                active: true
             }));
             renderProductsList();
             updateStats();
@@ -229,8 +230,31 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Função para fechar modal
     function closeProductModal() {
+    productModal.style.display = 'none';
+    
+    // Resetar estado da imagem
+    currentImageName = null;
+    document.getElementById('image-preview').innerHTML = '';
+    
+    // Resetar formulário
+    productForm.reset();
+    editingProductId = null;
+    
+    // Timeout se o modal não estiver responsível
+    setTimeout(() => {
         productModal.style.display = 'none';
+    }, 300);
+
+    // Restaurar imagem original se estiver editando
+    if (editingProductId) {
+        const product = currentProducts.find(p => p.id === editingProductId);
+        if (product && product.imageUrl) {
+            document.getElementById('image-preview').innerHTML = `
+                <img src="${product.imageUrl}" alt="${product.name}">
+            `;
+        }
     }
+}
     
     // Função para editar produto
     function editProduct(productId) {
@@ -256,7 +280,16 @@ document.addEventListener("DOMContentLoaded", function() {
             img.alt = product.name;
             imagePreview.appendChild(img);
         }
-        
+
+         // Se já tiver imagem, mostrar preview
+         if (product.imageName) {
+            const baseUrl = 'http://localhost:5211/images/';
+            document.getElementById('image-preview').innerHTML = `
+            <img src="${baseUrl}${product.imageName}" alt="${product.name}">
+        `;
+            currentImageName = product.imageName;
+        }
+
         productModal.style.display = 'block';
     }
     
@@ -265,11 +298,10 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
         
         const formData = {
-        id: document.getElementById('product-id').value,
-        florId: document.getElementById('product-category').value === 'rosas' ? 1 : 
-               document.getElementById('product-category').value === 'girassois' ? 2 : 3, // IDs fictícios
-        preco: parseFloat(document.getElementById('product-price').value),
-        estoque: 10 // Valor padrão ou adicionar campo no formulário
+            florId: parseInt(document.getElementById('flower-select').value),
+            preco: parseFloat(document.getElementById('product-price').value),
+            estoque: parseInt(document.getElementById('product-stock').value),
+            imageName: currentImageName
     };
         
         try {
@@ -370,7 +402,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 }
 
-// Na função deleteProduct():
 async function deleteProduct(productId) {
     if (!confirm('Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.')) return;
     
@@ -397,11 +428,18 @@ async function deleteProduct(productId) {
         }
     }
 
-    // Verificar a cada minuto se o usuário ainda está logado
+// Verifica a cada minuto se o usuário ainda está logado
 setInterval(() => {
     if (!usuarioEstaLogado() || !usuarioEhProdutor()) {
         window.location.href = 'home.html';
     }
 }, 60000);
+
+
+window.addEventListener('click', (event) => {
+    if (event.target === productModal) {
+        closeProductModal();
+    }
+});
 
 });

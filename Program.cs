@@ -1,6 +1,7 @@
 using FFCE.Data;
 using FFCE.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -90,6 +91,14 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.Configure<FormOptions>(options => {
+    options.MultipartBodyLengthLimit = 50 * 1024 * 1024; // 50MB
+    options.MemoryBufferThreshold = Int32.MaxValue;
+});
+
+builder.WebHost.ConfigureKestrel(serverOptions => {
+    serverOptions.Limits.MaxRequestBodySize = 50 * 1024 * 1024; // 50MB
+});
 
 var app = builder.Build();
 

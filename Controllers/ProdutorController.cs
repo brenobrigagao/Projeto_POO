@@ -16,11 +16,13 @@ namespace FFCE.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly ILogger<ProdutorController> _logger;
 
-        public ProdutorController(AppDbContext context, IWebHostEnvironment env)
+        public ProdutorController(AppDbContext context, IWebHostEnvironment env, ILogger<ProdutorController> logger)
         {
             _context = context;
             _env = env;
+            _logger = logger;
         }
 
         [HttpGet("listar-flores")]
@@ -28,8 +30,11 @@ namespace FFCE.Controllers
         {
             var baseUrl = $"{Request.Scheme}://{Request.Host}/images/";
             var flores = await _context.Flores
-                .Select(f => new {
-                    f.Id, f.Nome, f.Descricao,
+                .Select(f => new
+                {
+                    f.Id,
+                    f.Nome,
+                    f.Descricao,
                     ImageUrl = $"{baseUrl}{f.ImageName}"
                 })
                 .ToListAsync();
@@ -50,16 +55,21 @@ namespace FFCE.Controllers
             if (!System.IO.File.Exists(imagens))
                 return BadRequest("Imagem selecionada não encontrada.");
 
-            var produto = new Produto {
-                FlorId     = dto.FlorId,
+            var produto = new Produto
+            {
+                FlorId = dto.FlorId,
                 ProdutorId = produtorId,
-                Preco      = dto.Preco,
-                Estoque    = dto.Estoque,
-                ImageName  = flor.ImageName
+                Preco = dto.Preco,
+                Estoque = dto.Estoque,
+                ImageName = flor.ImageName
             };
             _context.Produtos.Add(produto);
             await _context.SaveChangesAsync();
-            return Ok("Produto cadastrado com sucesso.");
+            return Ok(new
+            {
+                success = true,
+                message = "Produto cadastrado com sucesso."
+            });
         }
 
         [HttpGet("meus-produtos")]
@@ -70,9 +80,10 @@ namespace FFCE.Controllers
             var produtos = await _context.Produtos
                 .Include(p => p.Flor)
                 .Where(p => p.ProdutorId == produtorId)
-                .Select(p => new {
+                .Select(p => new
+                {
                     p.Id,
-                    Flor     = p.Flor.Nome,
+                    Flor = p.Flor.Nome,
                     p.Preco,
                     p.Estoque,
                     ImageUrl = $"{baseUrl}{p.Flor.ImageName}"
@@ -88,10 +99,8 @@ namespace FFCE.Controllers
             var produto = await _context.Produtos
                 .FirstOrDefaultAsync(p => p.Id == id && p.ProdutorId == produtorId);
             if (produto == null) return NotFound("Produto não encontrado ou acesso negado.");
-
             if (dto.Preco.HasValue) produto.Preco = dto.Preco.Value;
             if (dto.Estoque.HasValue) produto.Estoque = dto.Estoque.Value;
-
             if (dto.FlorId.HasValue)
             {
                 var flor = await _context.Flores.FindAsync(dto.FlorId.Value);
@@ -101,13 +110,18 @@ namespace FFCE.Controllers
                 if (!System.IO.File.Exists(imagens))
                     return BadRequest("Imagem da flor não encontrada.");
 
-                produto.FlorId    = dto.FlorId.Value;
+                produto.FlorId = dto.FlorId.Value;
                 produto.ImageName = flor.ImageName;
             }
 
             _context.Produtos.Update(produto);
             await _context.SaveChangesAsync();
-            return Ok("Produto atualizado com sucesso.");
+            return Ok(new
+            {
+                success = true,
+                message = "Produto atualizado com sucesso."
+            });
+
         }
 
         [HttpDelete("excluir-produto/{id}")]
@@ -120,7 +134,12 @@ namespace FFCE.Controllers
 
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
-            return Ok("Produto excluído com sucesso.");
+            return Ok(new
+            {
+                success = true,
+                message = "Produto excluído com sucesso."
+            });
+
         }
     }
 }
