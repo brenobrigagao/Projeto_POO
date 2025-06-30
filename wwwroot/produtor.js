@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Verifica se é um produtor logado
     if (!usuarioEstaLogado() || !usuarioEhProdutor()) {
-       window.location.href = 'home.html';
+        window.location.href = 'home.html';
         return;
-   }
+    }
 
     // Elementos do DOM
     const productsListBody = document.getElementById('products-list-body');
@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalTitle = document.getElementById('modal-title');
     const totalProductsSpan = document.getElementById('total-products');
     const activeProductsSpan = document.getElementById('active-products');
-    const logoutBtn = document.getElementById('btn-logout');
+    const flowerSelect = document.getElementById('flower-select');
 
-    
+
     // Variáveis de estado
     let currentProducts = [];
     let editingProductId = null;
     let currentImageName = null;
-    
+
     // Event Listeners
     addProductBtn.addEventListener('click', openAddProductModal);
     closeModal.addEventListener('click', closeProductModal);
@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Carregar produtos do produtor
     loadProducerProducts();
-    
+
     // Função para verificar se o usuário está logado
     function usuarioEstaLogado() {
         const token = localStorage.getItem('token');
         if (!token) return false;
-        
+
         try {
             const payload = JSON.parse(atob(token.split('.')[1]));
             return payload.exp * 1000 > Date.now();
@@ -45,12 +45,12 @@ document.addEventListener("DOMContentLoaded", function() {
             return false;
         }
     }
-    
+
     // Função para verificar se o usuário é um produtor
     function usuarioEhProdutor() {
         const token = localStorage.getItem('token');
         if (!token) return false;
-        
+
         try {
             const payload = JSON.parse(atob(token.split('.')[1]));
             const roleKey = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
@@ -61,13 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return false;
         }
     }
-    
-    // Função para fazer logout
-    function logout() {
-        localStorage.removeItem('token');
-        window.location.href = 'home.html';
-    }
-    
+
     // Função para carregar produtos do produtor
     async function loadProducerProducts() {
         try {
@@ -77,24 +71,24 @@ document.addEventListener("DOMContentLoaded", function() {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            
+
             if (response.ok) {
-            currentProducts = await response.json();
-            // Adaptar os dados recebidos para o formato esperado
-            currentProducts = currentProducts.map(p => ({
-                id: p.id,
-                florId: p.florId,       // Adicionado
-                name: p.flor,           // Usar 'flor' como nome
-                price: p.preco,         // Manter 'preco'
-                estoque: p.estoque,     // Adicionar estoque
-                imageName: p.imageName, // Usar nome da imagem
-                active: true
-            }));
-            renderProductsList();
-            updateStats();
-        } else {
-            throw new Error('Erro ao carregar produtos');
-        }
+                currentProducts = await response.json();
+                // Adaptar os dados recebidos para o formato esperado
+                currentProducts = currentProducts.map(p => ({
+                    id: p.id,
+                    florId: p.florId,       // Adicionado
+                    name: p.flor,           // Usar 'flor' como nome
+                    price: p.preco,         // Manter 'preco'
+                    estoque: p.estoque,     // Adicionar estoque
+                    imageName: p.imageName, // Usar nome da imagem
+                    active: true
+                }));
+                renderProductsList();
+                updateStats();
+            } else {
+                throw new Error('Erro ao carregar produtos');
+            }
         } catch (error) {
             console.error("Erro:", error);
             // Usar dados de exemplo em desenvolvimento
@@ -102,13 +96,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 currentProducts = getSampleProducts();
                 renderProductsList();
                 updateStats();
-                alert("Modo de demonstração: usando dados locais");
             } else {
                 alert("Erro ao carregar produtos. Tente novamente mais tarde.");
             }
         }
     }
-    
+
     // Função para obter produtos de exemplo (apenas para desenvolvimento)
     function getSampleProducts() {
         return [
@@ -132,11 +125,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         ];
     }
-    
+
     // Função para renderizar a lista de produtos
     function renderProductsList() {
         productsListBody.innerHTML = '';
-        
+
         if (currentProducts.length === 0) {
             productsListBody.innerHTML = `
                 <div class="list-item empty-list">
@@ -145,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             return;
         }
-        
+
         currentProducts.forEach(product => {
             const productItem = document.createElement('div');
             productItem.className = 'list-item';
@@ -157,48 +150,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="item-col">${formatCategory(product.category)}</div>
                 <div class="item-col">R$ ${product.price.toFixed(2)}</div>
                 <div class="item-col">
-                    <span class="status-badge ${product.active ? 'active' : 'inactive'}">
-                        ${product.active ? 'Ativo' : 'Inativo'}
-                    </span>
                 </div>
                 <div class="item-col actions">
-                    <button class="action-btn edit-btn" data-id="${product.id}">
-                        <i class="fas fa-edit"></i>
-                    </button>
                     <button class="action-btn delete-btn" data-id="${product.id}">
                         <i class="fas fa-trash"></i>
                     </button>
-                    <button class="action-btn status-btn ${product.active ? 'deactivate' : 'activate'}" data-id="${product.id}">
-                        <i class="fas ${product.active ? 'fa-eye-slash' : 'fa-eye'}"></i>
-                    </button>
+
                 </div>
             `;
             productsListBody.appendChild(productItem);
         });
-        
+
         // Adicionar event listeners aos botões
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const productId = parseInt(e.currentTarget.dataset.id);
-                editProduct(productId);
-            });
-        });
-        
         document.querySelectorAll('.delete-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const productId = parseInt(e.currentTarget.dataset.id);
                 deleteProduct(productId);
             });
         });
-        
-        document.querySelectorAll('.status-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const productId = parseInt(e.currentTarget.dataset.id);
-                toggleProductStatus(productId);
-            });
-        });
+
     }
-    
+
     // Função para formatar categoria
     function formatCategory(category) {
         const categories = {
@@ -210,14 +182,14 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         return categories[category] || category;
     }
-    
+
     // Função para atualizar estatísticas
     function updateStats() {
         totalProductsSpan.textContent = currentProducts.length;
         const activeCount = currentProducts.filter(p => p.active).length;
         activeProductsSpan.textContent = activeCount;
     }
-    
+
     // Função para abrir modal de adição de produto
     function openAddProductModal() {
         editingProductId = null;
@@ -227,86 +199,26 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('product-id').value = '';
         productModal.style.display = 'block';
     }
-    
-    // Função para fechar modal
-    function closeProductModal() {
-    productModal.style.display = 'none';
-    
-    // Resetar estado da imagem
-    currentImageName = null;
-    document.getElementById('image-preview').innerHTML = '';
-    
-    // Resetar formulário
-    productForm.reset();
-    editingProductId = null;
-    
-    // Timeout se o modal não estiver responsível
-    setTimeout(() => {
-        productModal.style.display = 'none';
-    }, 300);
 
-    // Restaurar imagem original se estiver editando
-    if (editingProductId) {
-        const product = currentProducts.find(p => p.id === editingProductId);
-        if (product && product.imageUrl) {
-            document.getElementById('image-preview').innerHTML = `
-                <img src="${product.imageUrl}" alt="${product.name}">
-            `;
-        }
-    }
-}
-    
+
+
     // Função para editar produto
-    function editProduct(productId) {
-        const product = currentProducts.find(p => p.id === productId);
-        if (!product) return;
-        
-        editingProductId = productId;
-        modalTitle.textContent = 'Editar Produto';
-        
-        // Preencher formulário
-        document.getElementById('product-id').value = product.id;
-        document.getElementById('product-name').value = product.name;
-        document.getElementById('product-category').value = product.category;
-        document.getElementById('product-price').value = product.price;
-        document.getElementById('product-description').value = product.description;
-        
-        // Mostrar prévia da imagem
-        const imagePreview = document.getElementById('image-preview');
-        imagePreview.innerHTML = '';
-        if (product.imageUrl) {
-            const img = document.createElement('img');
-            img.src = product.imageUrl;
-            img.alt = product.name;
-            imagePreview.appendChild(img);
-        }
-
-         // Se já tiver imagem, mostrar preview
-         if (product.imageName) {
-            const baseUrl = 'http://localhost:5211/images/';
-            document.getElementById('image-preview').innerHTML = `
-            <img src="${baseUrl}${product.imageName}" alt="${product.name}">
-        `;
-            currentImageName = product.imageName;
-        }
-
-        productModal.style.display = 'block';
-    }
     
+
     // Função para lidar com envio do formulário
     async function handleProductSubmit(e) {
         e.preventDefault();
-        
+
         const formData = {
             florId: parseInt(document.getElementById('flower-select').value),
             preco: parseFloat(document.getElementById('product-price').value),
             estoque: parseInt(document.getElementById('product-stock').value),
             imageName: currentImageName
-    };
-        
+        };
+
         try {
             const token = localStorage.getItem('token');
-            
+
             // Criar FormData para enviar arquivos
             const fd = new FormData();
             fd.append('name', formData.name);
@@ -316,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (formData.imageFile) {
                 fd.append('image', formData.imageFile);
             }
-            
+
             let response;
             if (editingProductId) {
                 // Edição de produto existente
@@ -327,9 +239,9 @@ document.addEventListener("DOMContentLoaded", function() {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                    florId: formData.florId,
-                    preco: formData.preco,
-                    estoque: formData.estoque
+                        florId: formData.florId,
+                        preco: formData.preco,
+                        estoque: formData.estoque
                     })
                 });
             } else {
@@ -341,13 +253,13 @@ document.addEventListener("DOMContentLoaded", function() {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                    florId: formData.florId,
-                    preco: formData.preco,
-                    estoque: formData.estoque
+                        florId: formData.florId,
+                        preco: formData.preco,
+                        estoque: formData.estoque
                     })
                 });
             }
-            
+
             if (response.ok) {
                 alert(editingProductId ? 'Produto atualizado com sucesso!' : 'Produto cadastrado com sucesso!');
                 closeProductModal();
@@ -361,85 +273,76 @@ document.addEventListener("DOMContentLoaded", function() {
             alert(error.message || 'Erro ao processar a requisição');
         }
     }
+
     
-    // Função para alternar status do produto
-    async function toggleProductStatus(productId) {
-        if (!confirm('Deseja alterar o status deste produto?')) return;
-        
+
+    async function deleteProduct(productId) {
+        if (!confirm('Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.')) return;
+
         try {
             const token = localStorage.getItem('token');
-            const product = currentProducts.find(p => p.id === productId);
-            const newStatus = !product.active;
-            
-        // Endpoint não existe no controller - podemos remover ou implementar no backend
-        alert('Funcionalidade de alterar status não implementada no backend');
-        return;
-        
-        // Código original comentado:
-        /*
-        const response = await fetch(`/api/Produtor/produtos/${productId}/status`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ active: newStatus })
-        });
-        
-        if (response.ok) {
-            product.active = newStatus;
-            renderProductsList();
-            updateStats();
-            alert(`Produto ${newStatus ? 'ativado' : 'desativado'} com sucesso!`);
-        } else {
-            throw new Error('Erro ao alterar status');
-        }
-        */
+            const response = await fetch(`/api/Produtor/excluir-produto/${productId}`, {  // Ajustado para o endpoint correto
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
 
-    } catch (error) {
-        console.error("Erro:", error);
-        alert('Erro ao alterar status do produto');
-    }
-}
-
-async function deleteProduct(productId) {
-    if (!confirm('Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.')) return;
-    
-    try {
-        const token = localStorage.getItem('token');
-        const response = await fetch(`/api/Produtor/excluir-produto/${productId}`, {  // Ajustado para o endpoint correto
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
+            if (response.ok) {
+                currentProducts = currentProducts.filter(p => p.id !== productId);
+                renderProductsList();
+                updateStats();
+                alert('Produto excluído com sucesso!');
+            } else {
+                throw new Error('Erro ao excluir produto');
             }
-        });
-        
-        if (response.ok) {
-            currentProducts = currentProducts.filter(p => p.id !== productId);
-            renderProductsList();
-            updateStats();
-            alert('Produto excluído com sucesso!');
-        } else {
-            throw new Error('Erro ao excluir produto');
-        }
-    } catch (error) {
-        console.error("Erro:", error);
-        alert('Erro ao excluir produto');
+        } catch (error) {
+            console.error("Erro:", error);
+            alert('Erro ao excluir produto');
         }
     }
+    
+    // Função para fechar modal
+    function closeProductModal() {
+        productModal.style.display = 'none';
 
-// Verifica a cada minuto se o usuário ainda está logado
-setInterval(() => {
-    if (!usuarioEstaLogado() || !usuarioEhProdutor()) {
-        window.location.href = 'home.html';
+        // Resetar estado da imagem
+        currentImageName = null;
+        document.getElementById('image-preview').innerHTML = '';
+
+        // Resetar formulário
+        productForm.reset();
+        editingProductId = null;
+
+        // Timeout se o modal não estiver responsível
+        setTimeout(() => {
+            productModal.style.display = 'none';
+        }, 300);
+
+        // Restaurar imagem original se estiver editando
+        if (editingProductId) {
+            const product = currentProducts.find(p => p.id === editingProductId);
+            if (product && product.imageUrl) {
+                document.getElementById('image-preview').innerHTML = `
+                <img src="${product.imageUrl}" alt="${product.name}">
+            `;
+            }
+        }
     }
-}, 60000);
+    // Verifica a cada minuto se o usuário ainda está logado
+    setInterval(() => {
+        if (!usuarioEstaLogado() || !usuarioEhProdutor()) {
+            window.location.href = 'home.html';
+        }
+    }, 60000);
 
 
-window.addEventListener('click', (event) => {
-    if (event.target === productModal) {
-        closeProductModal();
-    }
-});
+    window.addEventListener('click', (event) => {
+        if (event.target === productModal) {
+            closeProductModal();
+        }
+    });
+
+
 
 });
