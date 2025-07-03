@@ -1,5 +1,7 @@
-.idea
-**/bin
-**/obj
-FRONT-END/ffce-frontend-react/node_modules
-FRONT-END/ffce-frontend-react/build
+.idea/
+**/.idea/
+**/bin/
+**/obj/
+FRONT-END/ffce-frontend-react/node_modules/
+FRONT-END/ffce-frontend-react/build/
+
