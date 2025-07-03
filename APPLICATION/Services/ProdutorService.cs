@@ -1,14 +1,9 @@
-namespace FFCE.Application.Services
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using FFCE.Application.DTOs;
-    using FFCE.Infra.UnitOfWork;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.AspNetCore.Hosting;
-    using System.IO;
+using APPLICATION.DTOs;
+using FFCE.Infra.UnitOfWork;
+using Microsoft.AspNetCore.Hosting;
 
+namespace APPLICATION.Services
+{
     public class ProdutorService
     {
         private readonly IUnitOfWork _uow;
@@ -25,16 +20,17 @@ namespace FFCE.Application.Services
         public async Task<IEnumerable<FlorDto>> ListarFloresAsync()
         {
             var flores = await _uow.Flores.GetAllAsync();
-            return flores.Select(f => FlorDto.FromEntity(f, _baseUrl));
+            return flores.Select(f => FlorDto.FromEntity(f, _baseUrl)).ToList();
         }
 
         public async Task CadastrarProdutoAsync(int produtorId, ProdutoCadastroDto dto)
         {
-            var flor = await _uow.Flores.GetByIdAsync(dto.FlorId);
-            if (flor is null) throw new InvalidOperationException();
+            var flor = await _uow.Flores.GetByIdAsync(dto.FlorId)
+                       ?? throw new InvalidOperationException("Flor não encontrada.");
 
-            var path = Path.Combine(_env.WebRootPath, "images", flor.ImageName);
-            if (!File.Exists(path)) throw new FileNotFoundException();
+            var path = Path.Combine(_env.WebRootPath!, "images", flor.ImageName);
+            if (!File.Exists(path))
+                throw new FileNotFoundException("Imagem da flor não encontrada no servidor.");
 
             var entity = ProdutoCadastroDto.ToEntity(produtorId, dto, flor.ImageName);
             await _uow.Produtos.AddAsync(entity);
@@ -43,45 +39,38 @@ namespace FFCE.Application.Services
 
         public async Task<IEnumerable<ProdutoListDto>> MeusProdutosAsync(int produtorId)
         {
-            var produtos   = await _uow.Produtos.GetAllAsync();
-            var flores     = await _uow.Flores.GetAllAsync();
-            var produtores = await _uow.Produtores.GetAllAsync();
-
-            return produtos
+            var produtos = (await _uow.Produtos.GetAllAsync())
                 .Where(p => p.ProdutorId == produtorId)
-                .Select(p =>
-                {
-                    var flor     = flores.First(f => f.Id == p.FlorId);
-                    var produtor = produtores.First(pr => pr.Id == p.ProdutorId);
-
-                    return new ProdutoListDto
-                    {
-                        ProdutoId = p.Id,
-                        Flor      = flor.Nome,
-                        Preco     = p.Preco,
-                        Estoque   = p.Estoque,
-                        NomeLoja  = produtor.NomeLoja,
-                        Telefone  = produtor.Telefone
-                    };
-                })
                 .ToList();
+
+            var florIds = produtos.Select(p => p.FlorId).Distinct().ToList();
+            var flores = await _uow.Flores.GetAllAsync();
+            var florMap = flores
+                .Where(f => florIds.Contains(f.Id))
+                .ToDictionary(f => f.Id);
+
+            return produtos.Select(p =>
+                ProdutoListDto.FromEntity(p, _baseUrl, florMap[p.FlorId])
+            ).ToList();
         }
-
-
 
         public async Task EditarProdutoAsync(int produtorId, int id, ProdutoAtualizaDto dto)
         {
-            var produto = await _uow.Produtos.GetByIdAsync(id);
-            if (produto is null || produto.ProdutorId != produtorId) throw new KeyNotFoundException();
+            var produto = await _uow.Produtos.GetByIdAsync(id)
+                          ?? throw new KeyNotFoundException("Produto não encontrado.");
+
+            if (produto.ProdutorId != produtorId)
+                throw new KeyNotFoundException("Produto não pertence ao produtor.");
 
             string? imageName = null;
             if (dto.FlorId.HasValue)
             {
-                var flor = await _uow.Flores.GetByIdAsync(dto.FlorId.Value);
-                if (flor is null) throw new InvalidOperationException();
+                var flor = await _uow.Flores.GetByIdAsync(dto.FlorId.Value)
+                           ?? throw new InvalidOperationException("Flor informada inválida.");
 
-                var path = Path.Combine(_env.WebRootPath, "images", flor.ImageName);
-                if (!File.Exists(path)) throw new FileNotFoundException();
+                var path = Path.Combine(_env.WebRootPath!, "images", flor.ImageName);
+                if (!File.Exists(path))
+                    throw new FileNotFoundException("Imagem da flor não encontrada.");
 
                 imageName = flor.ImageName;
             }
@@ -93,8 +82,11 @@ namespace FFCE.Application.Services
 
         public async Task ExcluirProdutoAsync(int produtorId, int id)
         {
-            var produto = await _uow.Produtos.GetByIdAsync(id);
-            if (produto is null || produto.ProdutorId != produtorId) throw new KeyNotFoundException();
+            var produto = await _uow.Produtos.GetByIdAsync(id)
+                          ?? throw new KeyNotFoundException("Produto não encontrado.");
+
+            if (produto.ProdutorId != produtorId)
+                throw new KeyNotFoundException("Produto não pertence ao produtor.");
 
             await _uow.Produtos.DeleteAsync(id);
             await _uow.CompleteAsync();

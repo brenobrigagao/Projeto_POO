@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
-using FFCE.Application.DTOs;
-using FFCE.Application.Services;
+using APPLICATION.DTOs;
+using APPLICATION.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -8,6 +8,7 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICATION.AssemblyInfoInputs.cache
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICATION.AssemblyInfo.cs
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICATION.csproj.CoreCompileInputs.cache
+/home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICATION.sourcelink.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICAT.4F738479.Up2Date
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICATION.dll
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/refint/APPLICATION.dll

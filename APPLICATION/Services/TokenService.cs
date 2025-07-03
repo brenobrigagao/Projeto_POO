@@ -1,19 +1,20 @@
-namespace FFCE.Application.Services
-{
-    using System;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-    using System.Text;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
-    public class TokenService
+namespace APPLICATION.Services
+{
+    public sealed class TokenService
     {
-        private readonly IConfiguration _configuration;
+        private readonly IConfiguration _cfg;
+        private readonly byte[]         _keyBytes;
 
         public TokenService(IConfiguration configuration)
         {
-            _configuration = configuration;
+            _cfg      = configuration;
+            _keyBytes = Encoding.UTF8.GetBytes(_cfg["Jwt:Key"]!);
         }
 
         public string GenerateToken(int id, string email, string role)
@@ -21,19 +22,19 @@ namespace FFCE.Application.Services
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, id.ToString()),
-                new Claim(ClaimTypes.Name, email),
-                new Claim(ClaimTypes.Role, role)
+                new Claim(ClaimTypes.Email,         email),
+                new Claim(ClaimTypes.Role,          role)
             };
 
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(
+                new SymmetricSecurityKey(_keyBytes),
+                SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer:   _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims:   claims,
-                expires:  DateTime.UtcNow.AddHours(4),
+                issuer:             _cfg["Jwt:Issuer"],
+                audience:           _cfg["Jwt:Audience"],
+                claims:             claims,
+                expires:            DateTime.UtcNow.AddHours(4),
                 signingCredentials: creds
             );
 

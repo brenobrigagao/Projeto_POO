@@ -1,5 +1,4 @@
-using FFCE.Application.DTOs;
-using FFCE.Application.Services;
+using APPLICATION.DTOs;
 using FFCE.Infra.UnitOfWork;
 
 namespace APPLICATION.Services
@@ -35,24 +34,31 @@ namespace APPLICATION.Services
         {
             var clientes = await _uow.Clientes.GetAllAsync();
             var cliente = clientes.FirstOrDefault(c => c.Email == dto.Email);
+
             if (cliente is not null && BCrypt.Net.BCrypt.Verify(dto.Senha, cliente.SenhaHash))
-                return (_tokenService.GenerateToken(cliente.Id, cliente.Email, "Cliente"), "Cliente", cliente.Id);
+            {
+                var token = _tokenService.GenerateToken(cliente.Id, cliente.Email, "Cliente");
+                return (token, "Cliente", cliente.Id);
+            }
 
             var produtores = await _uow.Produtores.GetAllAsync();
             var produtor = produtores.FirstOrDefault(p => p.Email == dto.Email);
+
             if (produtor is not null && BCrypt.Net.BCrypt.Verify(dto.Senha, produtor.SenhaHash))
-                return (_tokenService.GenerateToken(produtor.Id, produtor.Email, "Produtor"), "Produtor", produtor.Id);
+            {
+                var token = _tokenService.GenerateToken(produtor.Id, produtor.Email, "Produtor");
+                return (token, "Produtor", produtor.Id);
+            }
 
-            throw new InvalidOperationException("Credenciais inválidas");
+            throw new InvalidOperationException("Credenciais inválidas.");
         }
-
 
         public async Task<bool> VerificarCadastroAsync(int userId, string role) =>
             role switch
             {
-                "Cliente" => await _uow.Clientes.GetByIdAsync(userId) is not null,
+                "Cliente"  => await _uow.Clientes.GetByIdAsync(userId) is not null,
                 "Produtor" => await _uow.Produtores.GetByIdAsync(userId) is not null,
-                _ => throw new InvalidOperationException("Role desconhecida")
+                _          => throw new InvalidOperationException("Role desconhecida.")
             };
     }
 }

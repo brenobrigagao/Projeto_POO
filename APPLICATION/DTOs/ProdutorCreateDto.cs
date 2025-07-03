@@ -1,8 +1,6 @@
 using INFRA.Models;
 
-namespace FFCE.Application.DTOs
-{
-    
+namespace APPLICATION.DTOs;
 
 public class ProdutorCreateDto
 {
@@ -25,5 +23,4 @@ public class ProdutorCreateDto
             NomeLoja = dto.NomeLoja,
             Descricao = dto.Descricao
         };
-}
 }

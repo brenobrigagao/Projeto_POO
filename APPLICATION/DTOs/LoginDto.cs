@@ -1,8 +1,7 @@
-namespace FFCE.Application.DTOs
+namespace APPLICATION.DTOs;
+
+public class LoginDto
 {
-    public class LoginDto
-    {
-        public string Email { get; set; } = null!;
-        public string Senha { get; set; } = null!;
-    }
+    public string Email { get; set; } = null!;
+    public string Senha { get; set; } = null!;
 }

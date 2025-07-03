@@ -1,5 +1,6 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/appsettings.Development.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/appsettings.json
+/home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/API.staticwebassets.runtime.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/API.staticwebassets.endpoints.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/API
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/API.deps.json
@@ -65,6 +66,7 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/API.csproj.CoreCompileInputs.cache
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/API.MvcApplicationPartsAssemblyInfo.cs
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/API.MvcApplicationPartsAssemblyInfo.cache
+/home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/API.sourcelink.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/rjimswa.dswa.cache.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/rjsmrazor.dswa.cache.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json
@@ -79,4 +81,3 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/API.pdb
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/API.genruntimeconfig.cache
 /home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/Debug/net8.0/ref/API.dll
-/home/matheuscastelo/RiderProjects/FFCE-V2/API/bin/Debug/net8.0/API.staticwebassets.runtime.json

@@ -1,4 +1,5 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/bin/Debug/net8.0/INFRA.deps.json
+/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/bin/Debug/net8.0/INFRA.runtimeconfig.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/bin/Debug/net8.0/INFRA.dll
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/bin/Debug/net8.0/INFRA.pdb
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.csproj.AssemblyReference.cache
@@ -6,9 +7,9 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.AssemblyInfoInputs.cache
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.AssemblyInfo.cs
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.csproj.CoreCompileInputs.cache
+/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.sourcelink.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.dll
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/refint/INFRA.dll
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.pdb
-/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/ref/INFRA.dll
-/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/bin/Debug/net8.0/INFRA.runtimeconfig.json
 /home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/INFRA.genruntimeconfig.cache
+/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/Debug/net8.0/ref/INFRA.dll
