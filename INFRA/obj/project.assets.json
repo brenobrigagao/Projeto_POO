@@ -2532,11 +2532,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/INFRA.csproj",
+      "projectUniqueName": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/INFRA/INFRA.csproj",
       "projectName": "INFRA",
-      "projectPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/INFRA.csproj",
+      "projectPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/INFRA/INFRA.csproj",
       "packagesPath": "/home/matheuscastelo/.nuget/packages/",
-      "outputPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/obj/",
+      "outputPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/INFRA/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/matheuscastelo/.nuget/NuGet/NuGet.Config"

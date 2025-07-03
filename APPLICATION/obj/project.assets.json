@@ -1843,11 +1843,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/APPLICATION.csproj",
+      "projectUniqueName": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/APPLICATION.csproj",
       "projectName": "APPLICATION",
-      "projectPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/APPLICATION.csproj",
+      "projectPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/APPLICATION.csproj",
       "packagesPath": "/home/matheuscastelo/.nuget/packages/",
-      "outputPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/",
+      "outputPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/matheuscastelo/.nuget/NuGet/NuGet.Config"
@@ -1862,8 +1862,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/INFRA.csproj": {
-              "projectPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/INFRA/INFRA.csproj"
+            "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/INFRA/INFRA.csproj": {
+              "projectPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/INFRA/INFRA.csproj"
             }
           }
         }

@@ -1863,11 +1863,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/matheuscastelo/RiderProjects/FFCE-V2/API/API.csproj",
+      "projectUniqueName": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/API/API.csproj",
       "projectName": "API",
-      "projectPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/API/API.csproj",
+      "projectPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/API/API.csproj",
       "packagesPath": "/home/matheuscastelo/.nuget/packages/",
-      "outputPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/API/obj/",
+      "outputPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/matheuscastelo/.nuget/NuGet/NuGet.Config"
@@ -1882,8 +1882,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/APPLICATION.csproj": {
-              "projectPath": "/home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/APPLICATION.csproj"
+            "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/APPLICATION.csproj": {
+              "projectPath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/APPLICATION.csproj"
             }
           }
         }

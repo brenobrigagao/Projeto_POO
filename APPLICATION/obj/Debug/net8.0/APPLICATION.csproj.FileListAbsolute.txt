@@ -14,3 +14,19 @@
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/refint/APPLICATION.dll
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/APPLICATION.pdb
 /home/matheuscastelo/RiderProjects/FFCE-V2/APPLICATION/obj/Debug/net8.0/ref/APPLICATION.dll
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/bin/Debug/net8.0/APPLICATION.deps.json
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/bin/Debug/net8.0/APPLICATION.dll
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/bin/Debug/net8.0/APPLICATION.pdb
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/bin/Debug/net8.0/INFRA.dll
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/bin/Debug/net8.0/INFRA.pdb
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.csproj.AssemblyReference.cache
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.GeneratedMSBuildEditorConfig.editorconfig
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.AssemblyInfoInputs.cache
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.AssemblyInfo.cs
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.csproj.CoreCompileInputs.cache
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.sourcelink.json
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICAT.4F738479.Up2Date
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.dll
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/refint/APPLICATION.dll
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/APPLICATION.pdb
+/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/obj/Debug/net8.0/ref/APPLICATION.dll
