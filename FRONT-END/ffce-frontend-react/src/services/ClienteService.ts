@@ -12,6 +12,7 @@ interface ProdutoDisponivelDto {
   id: number
   nome: string
   descricao: string
+  tipo: string
   imageUrl: string
   preco: number
   estoque: number
@@ -24,6 +25,7 @@ export interface ProdutoDisponivel {
   id: number
   nome: string
   descricao: string
+  tipo: string
   imageUrl: string
   preco: number
   estoque: number
@@ -63,6 +65,7 @@ class ClienteServiceClass {
       id: item.id,
       nome: item.nome,
       descricao: item.descricao,
+      tipo: item.tipo,
       imageUrl: item.imageUrl,
       preco: item.preco,
       estoque: item.estoque,
