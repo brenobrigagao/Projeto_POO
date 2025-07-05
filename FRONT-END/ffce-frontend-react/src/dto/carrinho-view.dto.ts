@@ -1,6 +1,11 @@
-import { CarrinhoItemDto } from './carrinho-item.dto';
-
-export interface CarrinhoViewDto {
-  itens: CarrinhoItemDto[];
+interface CarrinhoViewDto {
+  itens: {
+    produtoId:      number;
+    flor:           string;
+    imageUrl:       string;
+    precoUnitario:  number;
+    quantidade:     number;
+    subtotal:       number;
+  }[];
   total: number;
 }

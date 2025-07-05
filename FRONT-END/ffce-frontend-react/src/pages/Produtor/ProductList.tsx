@@ -80,7 +80,7 @@ export default function ProductList() {
             <div key={p.produtoId} className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="p-5">
                 <div className="flex justify-center mb-4">
-                  {/* Exibindo a imagem da flor */}
+                  {/* Imagem da flor */}
                   <img
                     src={p.imageUrl}
                     alt={p.flor}
@@ -90,6 +90,9 @@ export default function ProductList() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{p.flor}</h3>
 
+                {/* EXIBIÇÃO DA DESCRIÇÃO */}
+                <p className="text-gray-500 text-sm mb-4">{p.descricao}</p>
+
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   <div>
                     <p className="text-sm text-gray-600">Preço:</p>
@@ -97,7 +100,9 @@ export default function ProductList() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-600">Estoque:</p>
-                    <p className={`font-medium ${p.estoque === 0 ? 'text-red-600' : 'text-green-600'}`}>{p.estoque} unidades</p>
+                    <p className={`font-medium ${p.estoque === 0 ? 'text-red-600' : 'text-green-600'}`}>
+                      {p.estoque} unidades
+                    </p>
                   </div>
                 </div>
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r5XQ8iIW9rw=",
+  "dgSpecHash": "gg/lbclPOAQ=",
   "success": true,
-  "projectFilePath": "/home/matheuscastelo/Área de Trabalho/FFCE-RFACTORY/Projeto_POO/APPLICATION/APPLICATION.csproj",
+  "projectFilePath": "/home/matheuscastelo/Área de Trabalho/FFCE/Projeto_POO/APPLICATION/APPLICATION.csproj",
   "expectedPackageFiles": [
     "/home/matheuscastelo/.nuget/packages/bcrypt.net-next/4.0.2/bcrypt.net-next.4.0.2.nupkg.sha512",
     "/home/matheuscastelo/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.0/microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",

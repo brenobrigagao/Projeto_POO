@@ -67,7 +67,12 @@ export default function Products() {
                 />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">{p.nome}</h3>
-              <p className="text-gray-500 text-sm mb-4">{p.descricao}</p>
+              <p className="text-gray-500 text-sm mb-2">{p.descricao}</p>
+
+              {/* Exibição do preço */}
+              <p className="text-lg font-bold text-green-600 mb-4">
+                R$ {p.preco.toFixed(2)}
+              </p>
 
               <button
                 onClick={() => handleAdd(p.id)}
