@@ -138,7 +138,6 @@ export default function ProductForm() {
           </h2>
 
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Preview da imagem */}
             <div className="md:w-1/3 flex justify-center">
               <div className="bg-gray-100 border-2 border-dashed rounded-xl w-48 h-48 flex items-center justify-center">
                 {imagemFlor ? (

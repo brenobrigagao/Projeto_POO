@@ -1,4 +1,4 @@
-export interface CarrinhoItemDto {
+export interface CarrinhoItem {
   id: number;
   produtoId: number;
   flor: string;

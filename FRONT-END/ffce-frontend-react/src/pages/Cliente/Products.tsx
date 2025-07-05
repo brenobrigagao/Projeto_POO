@@ -1,4 +1,3 @@
-// src/pages/Cliente/Products.tsx
 import { useEffect, useState } from 'react'
 import ClienteService, { type ProdutoDisponivel } from '../../services/ClienteService'
 import toast from 'react-hot-toast'

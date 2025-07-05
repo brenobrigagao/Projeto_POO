@@ -1,4 +1,3 @@
-// src/services/ClienteService.ts
 import api from './api'
 
 export interface CarrinhoItem {
@@ -9,7 +8,6 @@ export interface CarrinhoItem {
   imageUrl?: string
 }
 
-// DTO que reflete o JSON EXATO vindo da API:
 interface ProdutoDisponivelDto {
   id: number
   nome: string
@@ -22,7 +20,6 @@ interface ProdutoDisponivelDto {
   produtorId: number
 }
 
-// Interface final usada no componente:
 export interface ProdutoDisponivel {
   id: number
   nome: string
@@ -30,9 +27,9 @@ export interface ProdutoDisponivel {
   imageUrl: string
   preco: number
   estoque: number
-  produtorNome: string        // redundância útil para listas
+  produtorNome: string        
   telefoneLoja?: string
-  produtor: {                 // estrutura esperada por Products.tsx
+  produtor: {                 
     id: number
     nomeLoja: string
     telefone?: string
