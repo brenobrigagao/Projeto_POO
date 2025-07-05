@@ -4,4 +4,9 @@ export interface ProdutoDisponivel {
   descricao: string;
   imageUrl: string;
   preco: number;
+  estoque: number;
+  produtor: {
+    id: number;
+    nomeLoja: string;
+  };
 }

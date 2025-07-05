@@ -21,7 +21,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  /** Aplica dados lidos do storage ou recebidos do login */
   const applyAuth = (data: AuthResponse) => {
     setToken(data.token);
     setRole(data.role);
@@ -29,7 +28,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.setItem('auth', JSON.stringify(data));
   };
 
-  /** Remove sessão */
   const clearAuth = () => {
     setToken(null);
     setRole(null);
@@ -37,7 +35,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.removeItem('auth');
   };
 
-  /** Carrega sessão (se existir) e testa validade */
   useEffect(() => {
     (async () => {
       const raw = localStorage.getItem('auth');
@@ -57,7 +54,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     })();
   }, []);
 
-  /** Login explícito */
   const login = async (dto: LoginDto) => {
     setLoading(true);
     try {
@@ -72,7 +68,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
-  /** Logout */
   const logout = () => {
     clearAuth();
     navigate('/login');

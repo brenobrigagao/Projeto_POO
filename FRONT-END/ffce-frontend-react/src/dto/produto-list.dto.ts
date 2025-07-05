@@ -1,4 +1,3 @@
-// src/dto/produto-list.dto.ts
 
 export interface ProdutoListDto {
   produtoId: number;

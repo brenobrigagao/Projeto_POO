@@ -12,7 +12,6 @@ api.interceptors.request.use(config => {
       const { token } = JSON.parse(stored);
       if (token) config.headers.Authorization = `Bearer ${token}`;
     } catch {
-      /* JSON inválido → segue sem header */
     }
   }
   return config;

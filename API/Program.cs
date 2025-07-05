@@ -36,12 +36,17 @@ builder.Services.AddScoped<ProdutorService>(sp =>
 
 builder.Services.AddCors(options =>
 {
+    var origins = builder.Configuration
+                         .GetSection("Cors:AllowedOrigins")
+                         .Get<string[]>();
+
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173") // Frontend URL
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials(); // Importante para cookies/auth
+        policy
+            .WithOrigins(origins!)
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
 
@@ -112,10 +117,10 @@ else
     app.UseExceptionHandler("/error");
     app.UseHsts();
 }
+app.UseCors("CorsPolicy");
 
 app.UseRouting();
 
-app.UseCors("CorsPolicy");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

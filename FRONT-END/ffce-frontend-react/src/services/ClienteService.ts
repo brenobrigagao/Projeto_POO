@@ -1,4 +1,3 @@
-// src/services/ClienteService.ts
 import api from './api'
 
 export interface CarrinhoItem {
@@ -9,12 +8,32 @@ export interface CarrinhoItem {
   imageUrl?: string
 }
 
+interface ProdutoDisponivelDto {
+  id: number
+  nome: string
+  descricao: string
+  imageUrl: string
+  preco: number
+  estoque: number
+  nomeLoja: string
+  telefoneLoja: string
+  produtorId: number
+}
+
 export interface ProdutoDisponivel {
   id: number
   nome: string
   descricao: string
   imageUrl: string
   preco: number
+  estoque: number
+  produtorNome: string        
+  telefoneLoja?: string
+  produtor: {                 
+    id: number
+    nomeLoja: string
+    telefone?: string
+  }
 }
 
 export interface AddCarrinhoDto {
@@ -30,6 +49,7 @@ interface CarrinhoItemDto {
   quantidade: number
   subtotal: number
 }
+
 interface CarrinhoViewDto {
   itens: CarrinhoItemDto[]
   total: number
@@ -37,8 +57,23 @@ interface CarrinhoViewDto {
 
 class ClienteServiceClass {
   async listarProdutos(): Promise<ProdutoDisponivel[]> {
-    const { data } = await api.get<ProdutoDisponivel[]>('/Cliente/produtos-disponiveis')
-    return data
+    const { data } = await api.get<ProdutoDisponivelDto[]>('/Cliente/produtos-disponiveis')
+
+    return data.map(item => ({
+      id: item.id,
+      nome: item.nome,
+      descricao: item.descricao,
+      imageUrl: item.imageUrl,
+      preco: item.preco,
+      estoque: item.estoque,
+      produtorNome: item.nomeLoja,
+      telefoneLoja: item.telefoneLoja,
+      produtor: {
+        id: item.produtorId,
+        nomeLoja: item.nomeLoja,
+        telefone: item.telefoneLoja
+      }
+    }))
   }
 
   async adicionarAoCarrinho(dto: AddCarrinhoDto): Promise<void> {
